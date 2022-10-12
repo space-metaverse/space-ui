@@ -1,0 +1,10 @@
+*.md
+
+*.html
+
+*.config.js
+
+.eslintrc.js
+
+storybook-static
+src/tests

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Aeroport";
+    src: 'url("./Aeroport.otf")';
+}
+
+@font-face {
+    font-family: "Aeroport Light";
+    src: 'url("./Aeroport_Light.otf")';
+}
+
+@font-face {
+    font-family: "Aeroport Medium";
+    src: 'url("./Aeroport_Medium.otf")';
+}
+
+@font-face {
+    font-family: "Aeroport Bold";
+    src: 'url("./Aeroport_Bold.otf")';
+}
