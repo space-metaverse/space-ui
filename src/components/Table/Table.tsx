@@ -115,7 +115,7 @@ const Table = ({
                                             typeof Object.values(rows?.[0])?.[index] === 'string') && (
                                             <Selector
                                                 beforeInjection={(svg: any) => {
-                                                    const [upArrow, downArrow] = [...svg.querySelectorAll('path')];
+                                                    const [upArrow, downArrow] = svg.querySelectorAll('path');
                                                     if (columnFilters[column] === 'up') {
                                                         upArrow.style.stroke = '#111114';
                                                         downArrow.style.stroke = '#B0B0B8';
