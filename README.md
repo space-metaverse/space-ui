@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/@space-metaverse-ag%2Fspace-ui.svg)](https://badge.fury.io/js/@space-metaverse-ag%2Fspace-ui)
+
 # space-ui
 React component library for metaverse 3D and 2D apps.
 
