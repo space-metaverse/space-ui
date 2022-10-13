@@ -32,3 +32,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: aws s3 sync ./storybook-static/ s3://storybook.tryspace.com --region us-east-2 --delete
+      
+      - name: Publish NPM library
+        run: |
+          tsc -v
+          npm run build-lib
+          cd lib/
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_ACCESS_TOKEN }}
+          npm publish --verbose
