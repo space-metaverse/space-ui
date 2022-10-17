@@ -172,8 +172,8 @@ const CustomReactSVG = (props: CustomSVGProps) => (
                 svg.setAttribute('style', `fill: ${props.fill};`);
             }
             if (props.stroke) {
-                const paths = [...svg.querySelectorAll('path')];
-                paths.forEach((path) => {
+                const paths = svg.querySelectorAll('path');
+                paths.forEach((path: any) => {
                     path.setAttribute('style', `stroke: ${props.stroke};`);
                 });
             }
