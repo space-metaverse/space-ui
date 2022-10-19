@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, LabelHTMLAttributes, useMemo } from 'react';
+import { ChangeEvent, LabelHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 const Label = styled.label`
@@ -54,7 +54,7 @@ const CustomCheckmark = styled.span`
 
 interface CheckboxProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
     label: string;
-    isChecked?: boolean;
+    isChecked: boolean;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -65,19 +65,15 @@ const Checkbox = ({
     className,
     ...props
 }: CheckboxProps) => {
-    const [checkedInternal, setCheckedInternal] = useState<boolean>(false);
-
-    const checkedToUse = useMemo(() => isChecked || checkedInternal, [isChecked, checkedInternal]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setCheckedInternal(prev => !prev);
         onChange?.(event);
     };
 
     return (
         <Label className={className} {...props}>
             {label}
-            <Input type="checkbox" checked={checkedToUse} onChange={handleChange} />
+            <Input type="checkbox" checked={isChecked} onChange={handleChange} />
             <CustomCheckmark />
         </Label>
     );
