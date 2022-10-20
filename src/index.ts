@@ -1,3 +1,4 @@
+export * from './components/Theme';
 export * from './components/Button/Button';
 export * from './components/TextInput/TextInput';
 export * from './components/NumberInput/NumberInput';
