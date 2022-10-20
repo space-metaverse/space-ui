@@ -23,8 +23,9 @@
   "include": [
     "custom.d.ts",
     "src/index.ts",
-    "src/components/**/*",
+    "src/hooks/**/*",
     "src/icons/**/*",
+    "src/components/**/*",
   ],
   "exclude": [
     "storybook-static/**/*",

@@ -1,6 +1,14 @@
-import { useState, useMemo, ChangeEvent, useCallback, HTMLAttributes } from 'react';
-import { Plus as PlusIcon, Minus as MinusIcon } from '../../icons';
+import {
+    useMemo,
+    useState,
+    ChangeEvent,
+    useCallback,
+    HTMLAttributes,
+} from 'react';
+
 import styled, { css } from 'styled-components';
+
+import { Plus as PlusIcon, Minus as MinusIcon } from '../../icons';
 
 const InputWrapper = styled.div<{ disabled: boolean, isError: boolean }>`
     display: flex;
@@ -12,11 +20,11 @@ const InputWrapper = styled.div<{ disabled: boolean, isError: boolean }>`
     transition: background-color 0.2s ease-in-out;
     border-radius: 12px;
     color: #111114;
-    ${props => props.disabled && css`
+    ${(props) => props.disabled && css`
         opacity: 0.5;
         cursor: not-allowed;
     `}
-    ${props => props.isError && css`
+    ${(props) => props.isError && css`
         border: 1px solid #F50018;
         background-color: #F500180D;
     `}
@@ -31,7 +39,7 @@ const Input = styled.input<{ isError: boolean }>`
     text-align: center;
     padding: 0;
     font-size: 1.2rem;
-    ${props => props.isError && css`
+    ${(props) => props.isError && css`
         background-color: #f5001803;
     `}
 `;
@@ -75,18 +83,18 @@ const NumberInput = ({
     const valueToUse = useMemo(() => value || valueInternal, [value, valueInternal]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        if (!disabled) {
+        if (! disabled) {
             setValueInternal(Number(event.target.value));
             onChange?.(event);
         }
     }, [disabled, onChange]);
 
     const handlePlus = useCallback(() => {
-        !disabled && setValueInternal((prev) => prev + 1);
+        ! disabled && setValueInternal((prev) => prev + 1);
     }, [disabled]);
 
     const handleMinus = useCallback(() => {
-        !disabled && setValueInternal((prev) => prev - 1);
+        ! disabled && setValueInternal((prev) => prev - 1);
     }, [disabled]);
 
     return (
