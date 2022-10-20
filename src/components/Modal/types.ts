@@ -1,4 +1,4 @@
-import type { HTMLMotionProps } from 'framer-motion';
+import type { HTMLAttributes } from 'react';
 
 import type { ButtonProps } from '../Button/Button';
 
@@ -7,7 +7,7 @@ export interface ModalProps {
     closed: VoidFunction;
 }
 
-export interface ModalBaseProps extends HTMLMotionProps<'div'> {
+export interface ModalBaseProps extends HTMLAttributes<HTMLDivElement> {
     size?: 'sm' | 'md';
     clear?: VoidFunction;
     close?: boolean;
@@ -18,4 +18,8 @@ export interface ModalBaseProps extends HTMLMotionProps<'div'> {
     };
     initialValue?: boolean;
     outsideClick?: boolean;
+}
+
+export interface StyledModalProps extends Pick<ModalBaseProps, 'size' | 'shadow'> {
+    show: boolean;
 }

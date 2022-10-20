@@ -1,6 +1,30 @@
 import { createGlobalStyle, type DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = ({
+    fonts: {
+        size: {
+            xs: ['.625rem', '.875rem'],
+            sm: ['.75rem', '1rem'],
+            md: ['.875rem', '1.25rem'],
+            lg: ['1rem', '1.5rem'],
+            xl: ['1.25rem', '2rem'],
+            '2xl': ['1.5rem', '2rem'],
+            '3xl': ['2rem', '3rem'],
+        },
+
+        weight: {
+            bold: 700,
+            normal: 400,
+            medium: 500,
+            semibold: 600,
+        },
+
+        family: {
+            sans: ['Aeroport', 'sans-serif'],
+            body: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+    },
+
     colors: {
         sky: {
             400: '#00D9F5',
@@ -50,6 +74,10 @@ const theme: DefaultTheme = ({
         },
 
         transparent: 'transparent',
+    },
+
+    transitions: {
+        easeInOut: 'all .3s ease-in-out',
     },
 });
 

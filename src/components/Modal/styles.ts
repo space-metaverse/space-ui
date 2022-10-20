@@ -1,13 +1,17 @@
-import { motion } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const Base = styled(motion.div)`
+import type { StyledModalProps } from './types';
+
+const Base = styled.div<StyledModalProps>`
     inset: 0;
     width: 100%;
     height: 100%;
     display: flex;
+    opacity: ${({ show }) => (show ? 1 : 0)};
     position: fixed;
+    transition: ${({ theme }) => theme.transitions.easeInOut};
     align-items: center;
+    pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
     justify-content: center;
     backdrop-filter: blur(24px);
 `;
@@ -20,7 +24,7 @@ const Body = styled.div``;
 
 const Footer = styled.div``;
 
-const Wrapper = styled(motion.div)``;
+const Wrapper = styled.div``;
 
 export default {
     Base,
