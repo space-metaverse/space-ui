@@ -5,9 +5,9 @@ React component library for metaverse 3D and 2D apps.
 
 ## How to use the UI library
 
-1.) `npm install @space-metaverse-ag/space-ui`
+`npm install @space-metaverse-ag/space-ui`
 
-Example usage:
+#### Example usage:
 
 Components: 
 
@@ -19,13 +19,13 @@ Icons:
 
 ## Develop locally
 
-1.) Install Node.js LTS
+1. Install Node.js LTS
 
-2.) `npm install`
+2. `npm install`
 
-3.) `npm run storybook`
+3. `npm run storybook`
 
-4.) Go-to: http://localhost:6006/
+4. Go-to: http://localhost:6006/
 
 ## NPM Package
 
