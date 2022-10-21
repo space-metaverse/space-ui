@@ -1,5 +1,9 @@
-import { ChangeEvent, InputHTMLAttributes, useCallback, useMemo, useState } from 'react';
+import {
+    ChangeEvent, InputHTMLAttributes, useCallback, useMemo, useState,
+} from 'react';
+
 import styled, { css } from 'styled-components';
+
 import { EyeClose, EyeOpen } from '../../icons';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,7 +18,7 @@ interface TextInputProps extends InputProps {
 const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    font-family: Aeroport Light;
+    font-weight: 300;
     color: #111114;
 `;
 
@@ -31,19 +35,19 @@ const Input = styled.input<InputProps & { showPassword: boolean, isHovering: boo
     border-radius: 12px;
     outline: none;
     width: 100%;
-    ${props => props.disabled && css`
+    ${(props) => props.disabled && css`
         opacity: 0.5;
         cursor: not-allowed;
     `}
-    ${props => props.isError && css`
+    ${(props) => props.isError && css`
         border: 1px solid #F50018;
         background-color: #F500180D;
     `}
-    ${props => (props.type === 'password' || props.showPassword) && css`
+    ${(props) => (props.type === 'password' || props.showPassword) && css`
         border-radius: 12px 0 0 12px;
         border-right: none !important;
     `}
-    ${props => (props.isFocused || props.isHovering) && css`
+    ${(props) => (props.isFocused || props.isHovering) && css`
         border: 1px solid ${props.isError ? '#F50018' : '#8900FF'};
     `}
 `;
@@ -65,15 +69,15 @@ const PasswordToggleWrapper = styled.div<{
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     padding: 0.7rem 1rem;
     cursor: pointer;
-    ${props => props.disabled && css`
+    ${(props) => props.disabled && css`
         opacity: 0.5;
         cursor: not-allowed;
     `}
-    ${props => props.isError && css`
+    ${(props) => props.isError && css`
         border: 1px solid #F50018;
         background-color: #F500180D;
     `}
-    ${props => (props.isFocused || props.isHovering) && css`
+    ${(props) => (props.isFocused || props.isHovering) && css`
         border: 1px solid ${props.isError ? '#F50018' : '#8900FF'};
     `}
 `;
@@ -99,14 +103,14 @@ const TextInput = ({
     const showPasswordToUse = useMemo(() => showPassword || showPasswordInternal, [showPassword, showPasswordInternal]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        if (!disabled) {
+        if (! disabled) {
             setValueInternal(event.target.value);
             onChange?.(event);
         }
     }, [onChange, disabled]);
 
     const handlePasswordToggle = useCallback(() => {
-        setShowPasswordInternal(prev => !prev);
+        setShowPasswordInternal((prev) => ! prev);
     }, []);
 
     return (

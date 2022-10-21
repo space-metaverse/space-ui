@@ -12,10 +12,10 @@ const bounce = keyframes`
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-24px);
+        transform: translateY(-12px);
     }
     60% {
-        transform: translateY(-12px);
+        transform: translateY(-8px);
     }
 `;
 
@@ -44,8 +44,8 @@ const theme: DefaultTheme = ({
         },
 
         family: {
-            sans: "'Aeroport', 'sans-serif'",
-            body: "'Inter', 'ui-sans-serif', 'system-ui'",
+            sans: "Aeroport, 'sans-serif'",
+            body: "Inter, 'ui-sans-serif', 'system-ui'",
         },
     },
 
@@ -125,18 +125,22 @@ const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: Aeroport;
         src: url("../../fonts/Aeroport.otf");
+        font-weight: 400;
     }
     @font-face {
-        font-family: Aeroport Light;
+        font-family: Aeroport;
         src: url("../../fonts/Aeroport_Light.otf");
+        font-weight: 300;
     }
     @font-face {
-        font-family: Aeroport Medium;
+        font-family: Aeroport;
         src: url("../../fonts/Aeroport_Medium.otf");
+        font-weight: 500;
     }
     @font-face {
-        font-family: Aeroport Bold;
+        font-family: Aeroport;
         src: url("../../fonts/Aeroport_Bold.otf");
+        font-weight: 700;
     }
 
     /**
@@ -145,16 +149,6 @@ const GlobalStyles = createGlobalStyle`
     ${reset}
 
     body {
-        font-family: ${theme.fonts.family.body};
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    button {
         font-family: ${theme.fonts.family.sans};
     }
 `;

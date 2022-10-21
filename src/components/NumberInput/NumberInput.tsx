@@ -31,9 +31,8 @@ const InputWrapper = styled.div<{ disabled: boolean, isError: boolean }>`
 `;
 
 const Input = styled.input<{ isError: boolean }>`
-    font-family: Aeroport Light;
     padding-bottom: 0.5rem;
-    font-weight: 700;
+    font-weight: 300;
     outline: none;
     border: none;
     text-align: center;

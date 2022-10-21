@@ -55,7 +55,7 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
         >
             <Styled.Wrapper ref={wrapper}>
                 {(close || title) && (
-                    <Styled.Head>
+                    <Styled.Head shadow={shadow}>
                         {title && (
                             <Styled.Title>
                                 {title}

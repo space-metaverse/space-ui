@@ -45,16 +45,25 @@ const Base = styled.div<StyledModalProps>`
     `}
 `;
 
-const Head = styled.div`
+const Head = styled.div<{ shadow: boolean }>`
     padding: 24px 32px;
+    display: flex;
     position: relative;
+    align-items: center;
 
-    svg {
+    > div {
         color: ${({ theme }) => theme.colors.dark[500]};
         right: 32px;
         cursor: pointer;
         position: absolute;
     }
+
+    ${({ theme, shadow }) => shadow && css`
+        box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.12);
+        justify-content: center;
+        border-top-left-radius: ${theme.radius['3xl']};
+        border-top-right-radius: ${theme.radius['3xl']};
+    `}
 `;
 
 const Title = styled.h6`
