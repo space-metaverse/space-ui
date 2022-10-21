@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { rgba } from '../../helpers';
 import { animations } from '../Theme';
 import type { StyledModalProps } from './types';
 
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     position: relative;
-    box-shadow: 0px 48px 48px -48px rgba(0, 0, 0, 0.24);
+    box-shadow: ${({ theme }) => `0px 48px 48px -48px ${rgba(theme.colors.dark[800], '.24')}`};
     border-radius: ${({ theme }) => theme.radius['3xl']};
     flex-direction: column;
     background-color: ${({ theme }) => theme.colors.white};
@@ -31,6 +32,7 @@ const Base = styled.div<StyledModalProps>`
     pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
     justify-content: center;
     backdrop-filter: blur(24px);
+    background-color: ${({ theme }) => rgba(theme.colors.dark[600], '.2')};
 
     ${({ show }) => show && css`
         ${Wrapper} {
@@ -64,6 +66,10 @@ const Head = styled.div<{ shadow: boolean }>`
         border-top-left-radius: ${theme.radius['3xl']};
         border-top-right-radius: ${theme.radius['3xl']};
     `}
+
+    ${({ theme, shadow }) => ! shadow && css`
+        border-bottom: 1px solid ${theme.colors.dark[200]};
+    `}
 `;
 
 const Title = styled.h6`
@@ -72,9 +78,22 @@ const Title = styled.h6`
     font-weight: ${({ theme }) => theme.fonts.weight.bold};
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+`;
 
-const Footer = styled.div``;
+const Footer = styled.div`
+    gap: 16px;
+    display: flex;
+    padding: 16px 24px;
+    box-shadow: ${({ theme }) => `0px 0px 48px ${rgba(theme.colors.dark[800], '.12')}`};
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom-left-radius: ${({ theme }) => theme.radius['3xl']};
+    border-bottom-right-radius: ${({ theme }) => theme.radius['3xl']};
+`;
 
 export default {
     Base,

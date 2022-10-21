@@ -26,6 +26,7 @@
     "src/hooks/**/*",
     "src/icons/**/*",
     "src/styled.d.ts",
+    "src/helpers/**/*",
     "src/components/**/*",
   ],
   "exclude": [
