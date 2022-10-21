@@ -75,15 +75,16 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
                         {!! actions.secondary && (
                             <Button
                                 {...actions.secondary}
-                                size={actions.secondary.size || 'md'}
-                                label={actions.secondary.label || 'Cancel'}
+                                size={actions.secondary.size || 'medium'}
+                                color={actions.secondary.color || 'grey'}
                             />
                         )}
 
                         {!! actions.primary && (
                             <Button
                                 {...actions.primary}
-                                size={actions.primary.size || 'md'}
+                                size={actions.primary.size || 'medium'}
+                                color={actions.primary.color || 'blue'}
                             />
                         )}
                     </Styled.Footer>

@@ -2,6 +2,11 @@ import type { HTMLAttributes } from 'react';
 
 import type { ButtonProps } from '../Button/Button';
 
+type ActionProps = Omit<ButtonProps, 'size' | 'color'> & {
+    size?: ButtonProps['size'];
+    color?: ButtonProps['color'];
+};
+
 export interface ModalProps {
     opened: VoidFunction;
     closed: VoidFunction;
@@ -13,8 +18,8 @@ export interface ModalBaseProps extends HTMLAttributes<HTMLDivElement> {
     close?: boolean;
     shadow?: boolean;
     actions?: {
-        primary?: ButtonProps;
-        secondary?: ButtonProps;
+        primary?: ActionProps;
+        secondary?: ActionProps;
     };
     initialValue?: boolean;
     outsideClick?: boolean;
