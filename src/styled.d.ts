@@ -1,16 +1,18 @@
 import 'styled-components';
 
+import type { FlattenSimpleInterpolation } from 'styled-components';
+
 declare module 'styled-components' {
     export interface DefaultTheme {
         fonts: {
             size: {
-                xs: string[];
-                sm: string[];
-                md: string[];
-                lg: string[];
-                xl: string[];
-                '2xl': string[];
-                '3xl': string[];
+                xs: FlattenSimpleInterpolation;
+                sm: FlattenSimpleInterpolation;
+                md: FlattenSimpleInterpolation;
+                lg: FlattenSimpleInterpolation;
+                xl: FlattenSimpleInterpolation;
+                '2xl': FlattenSimpleInterpolation;
+                '3xl': FlattenSimpleInterpolation;
             },
 
             weight: {
@@ -21,9 +23,19 @@ declare module 'styled-components' {
             },
 
             family: {
-                sans: string[];
-                body: string[];
+                sans: string;
+                body: string;
             },
+        };
+
+        radius: {
+            sm: string;
+            md: string;
+            lg: string;
+            xl: string;
+            none: string;
+            '2xl': string;
+            '3xl': string;
         };
 
         colors: {
@@ -78,7 +90,7 @@ declare module 'styled-components' {
         };
 
         transitions: {
-            easeInOut: string;
+            ease: string;
         }
     }
 }

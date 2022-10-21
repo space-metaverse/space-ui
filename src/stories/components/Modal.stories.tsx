@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         <div>
             <button type="button" onClick={() => ref.current?.opened()}>Show modal</button>
 
-            <Modal ref={ref} {...args} />
+            <Modal ref={ref} title="Modal" {...args} />
         </div>
     )
 };

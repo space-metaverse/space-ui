@@ -13,7 +13,6 @@ import Styled from './styles';
 import type { ModalProps, ModalBaseProps } from './types';
 
 const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
-    size = 'sm',
     clear,
     close = true,
     title,
