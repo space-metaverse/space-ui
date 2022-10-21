@@ -69,7 +69,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
                 ref={ref} 
                 {...args} 
             >
-                <p style={{ padding: '48px 0' }}>Hello space</p>
+                <p style={{ padding: '32px 0' }}>Hello space</p>
             </Modal>
         </div>
     )
