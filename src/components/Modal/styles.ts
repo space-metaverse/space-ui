@@ -5,8 +5,8 @@ import { animations } from '../Theme';
 import type { StyledModalProps } from './types';
 
 const sizes = {
-    sm: '384px',
-    md: '682px',
+    small: '384px',
+    medium: '682px',
 };
 
 const Wrapper = styled.div`
@@ -40,7 +40,7 @@ const Base = styled.div<StyledModalProps>`
         }
     `}
 
-    ${({ size = 'sm' }) => css`
+    ${({ size = 'small' }) => css`
         ${Wrapper} {
             max-width: ${sizes[size]};
         }

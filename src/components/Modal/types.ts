@@ -8,7 +8,7 @@ export interface ModalProps {
 }
 
 export interface ModalBaseProps extends HTMLAttributes<HTMLDivElement> {
-    size?: 'sm' | 'md';
+    size?: 'small' | 'medium';
     clear?: VoidFunction;
     close?: boolean;
     shadow?: boolean;
