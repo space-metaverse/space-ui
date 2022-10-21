@@ -1,15 +1,39 @@
-import { createGlobalStyle, type DefaultTheme } from 'styled-components';
+import {
+    css,
+    keyframes,
+    createGlobalStyle,
+    type DefaultTheme,
+} from 'styled-components';
+
+import reset from './reset';
+
+const bounce = keyframes`
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-24px);
+    }
+    60% {
+        transform: translateY(-12px);
+    }
+`;
+
+const fontSize = (sizes: string[]) => css`
+    font-size: ${sizes[0]};
+    line-height: ${sizes[1]};
+`;
 
 const theme: DefaultTheme = ({
     fonts: {
         size: {
-            xs: ['.625rem', '.875rem'],
-            sm: ['.75rem', '1rem'],
-            md: ['.875rem', '1.25rem'],
-            lg: ['1rem', '1.5rem'],
-            xl: ['1.25rem', '2rem'],
-            '2xl': ['1.5rem', '2rem'],
-            '3xl': ['2rem', '3rem'],
+            xs: fontSize(['.625rem', '.875rem']),
+            sm: fontSize(['.75rem', '1rem']),
+            md: fontSize(['.875rem', '1.25rem']),
+            lg: fontSize(['1rem', '1.5rem']),
+            xl: fontSize(['1.25rem', '2rem']),
+            '2xl': fontSize(['1.5rem', '2rem']),
+            '3xl': fontSize(['2rem', '3rem']),
         },
 
         weight: {
@@ -20,9 +44,19 @@ const theme: DefaultTheme = ({
         },
 
         family: {
-            sans: ['Aeroport', 'sans-serif'],
-            body: ['Inter', 'ui-sans-serif', 'system-ui'],
+            sans: "'Aeroport', 'sans-serif'",
+            body: "'Inter', 'ui-sans-serif', 'system-ui'",
         },
+    },
+
+    radius: {
+        sm: '2px',
+        md: '4px',
+        lg: '8px',
+        xl: '12px',
+        none: '0px',
+        '2xl': '16px',
+        '3xl': '24px',
     },
 
     colors: {
@@ -77,9 +111,15 @@ const theme: DefaultTheme = ({
     },
 
     transitions: {
-        easeInOut: 'all .3s ease-in-out',
+        ease: 'all .3s ease-in-out',
     },
 });
+
+const animations = {
+    bounce: css`
+        animation: ${bounce} 2s ease normal;
+    `,
+};
 
 const GlobalStyles = createGlobalStyle`
     @font-face {
@@ -98,9 +138,29 @@ const GlobalStyles = createGlobalStyle`
         font-family: Aeroport Bold;
         src: url("../../fonts/Aeroport_Bold.otf");
     }
+
+    /**
+     * Apply reset styles.
+     */
+    ${reset}
+
+    body {
+        font-family: ${theme.fonts.family.body};
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button {
+        font-family: ${theme.fonts.family.sans};
+    }
 `;
 
 export {
     theme,
+    animations,
     GlobalStyles,
 };
