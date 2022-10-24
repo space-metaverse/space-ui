@@ -75,5 +75,6 @@ module.exports = {
     'react/function-component-definition': [2, {
       namedComponents: 'arrow-function',
     }],
+    "linebreak-style": 0,
   },
 };

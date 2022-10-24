@@ -24,6 +24,7 @@
     "custom.d.ts",
     "src/index.ts",
     "src/components/**/*",
+    "src/hooks/**/*",
     "src/icons/**/*",
   ],
   "exclude": [
