@@ -1,6 +1,14 @@
-import type { HexProps, RgbaProps } from './types';
+type Rgb = {
+    r: number | null,
+    g: number | null,
+    b: number | null,
+};
 
-const rgb: HexProps = (hex) => {
+type HexProps = (hex: string) => Rgb;
+
+type RgbaProps = (hex: string, alpha: string) => string;
+
+const rgb: HexProps = hex => {
     const short = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
 
     const value = hex.replace(short, (_, r, g, b) => r + r + g + g + b + b);

@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
+import type { RefObject } from 'react';
 
-import type { AnyEvent, OutsideClickProps } from './types';
+type AnyEvent = MouseEvent | TouchEvent;
+
+type OutsideClickProps = <T extends HTMLElement = HTMLElement>(
+    ref: RefObject<T>,
+    handler: (event: AnyEvent) => void,
+) => void;
 
 const useOutsideClick: OutsideClickProps = (ref, handler) => {
     useEffect(() => {
@@ -11,7 +17,7 @@ const useOutsideClick: OutsideClickProps = (ref, handler) => {
              * Do nothing if clicking ref's
              * element or descendent elements.
              */
-            if (! el || el.contains(event.target as Node)) {
+            if (!el || el.contains(event.target as Node)) {
                 return;
             }
 

@@ -5,8 +5,8 @@ import { animations } from '../Theme';
 import type { StyledModalProps } from './types';
 
 const sizes = {
-    small: '384px',
-    medium: '682px',
+    small: '24rem',
+    medium: '42.625rem',
 };
 
 const Wrapper = styled.div`
@@ -67,7 +67,7 @@ const Head = styled.div<{ shadow: boolean }>`
         border-top-right-radius: ${theme.radius['3xl']};
     `}
 
-    ${({ theme, shadow }) => ! shadow && css`
+    ${({ theme, shadow }) => !shadow && css`
         border-bottom: 1px solid ${theme.colors.dark[200]};
     `}
 `;
