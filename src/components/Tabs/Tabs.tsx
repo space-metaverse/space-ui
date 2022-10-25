@@ -1,9 +1,10 @@
 import { useCallback, useState, useMemo } from 'react';
+
 import styled from 'styled-components';
 
 const TabsWrapper = styled.div`
-    font-family: Aeroport Medium;
     display: flex;
+    font-weight: 500;
     color: #111114;
     width: 100%;
 `;
@@ -15,7 +16,7 @@ const Tab = styled.div<{ activeTab: boolean }>`
     font-size: 1rem;
     transition: border 0.2s ease-in-out;
     cursor: pointer;
-    border-bottom: 2px solid ${props => props.activeTab ? '#3332FE' : 'transparent'};
+    border-bottom: 2px solid ${(props) => (props.activeTab ? '#3332FE' : 'transparent')};
 `;
 
 interface TabsProps {
@@ -29,7 +30,7 @@ const Tabs = ({
     tabs = [],
     activeTab,
     onChange,
-    className
+    className,
 }: TabsProps) => {
     const [activeTabInternal, setActiveTabInternal] = useState<string>(tabs?.[0] || '');
 
