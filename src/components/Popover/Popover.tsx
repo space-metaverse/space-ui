@@ -5,9 +5,10 @@ import {
 import styled from 'styled-components';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { SVGProps } from '../../icons';
 
 export type PopoverOptionProps = {
-    icon?: JSX.Element;
+    icon?: (props: SVGProps) => JSX.Element;
     label: string;
     callback: VoidFunction;
 };
