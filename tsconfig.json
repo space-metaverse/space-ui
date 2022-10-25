@@ -23,8 +23,11 @@
   "include": [
     "custom.d.ts",
     "src/index.ts",
-    "src/components/**/*",
+    "src/hooks/**/*",
     "src/icons/**/*",
+    "src/styled.d.ts",
+    "src/helpers/**/*",
+    "src/components/**/*",
   ],
   "exclude": [
     "storybook-static/**/*",

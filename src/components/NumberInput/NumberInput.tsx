@@ -1,6 +1,14 @@
-import { useState, useMemo, ChangeEvent, useCallback, HTMLAttributes } from 'react';
-import { Plus as PlusIcon, Minus as MinusIcon } from '../../icons';
+import {
+    useMemo,
+    useState,
+    ChangeEvent,
+    useCallback,
+    HTMLAttributes,
+} from 'react';
+
 import styled, { css } from 'styled-components';
+
+import { Plus as PlusIcon, Minus as MinusIcon } from '../../icons';
 
 const InputWrapper = styled.div<{ disabled: boolean, isError: boolean }>`
     display: flex;
@@ -23,9 +31,8 @@ const InputWrapper = styled.div<{ disabled: boolean, isError: boolean }>`
 `;
 
 const Input = styled.input<{ isError: boolean }>`
-    font-family: Aeroport Light;
     padding-bottom: 0.5rem;
-    font-weight: 700;
+    font-weight: 300;
     outline: none;
     border: none;
     text-align: center;
@@ -82,11 +89,11 @@ const NumberInput = ({
     }, [disabled, onChange]);
 
     const handlePlus = useCallback(() => {
-        !disabled && setValueInternal((prev) => prev + 1);
+        !disabled && setValueInternal(prev => prev + 1);
     }, [disabled]);
 
     const handleMinus = useCallback(() => {
-        !disabled && setValueInternal((prev) => prev - 1);
+        !disabled && setValueInternal(prev => prev - 1);
     }, [disabled]);
 
     return (

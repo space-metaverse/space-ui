@@ -1,5 +1,9 @@
-import { ChangeEvent, InputHTMLAttributes, useCallback, useMemo, useState } from 'react';
+import {
+    ChangeEvent, InputHTMLAttributes, useCallback, useMemo, useState,
+} from 'react';
+
 import styled, { css } from 'styled-components';
+
 import { EyeClose, EyeOpen } from '../../icons';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,7 +18,7 @@ interface TextInputProps extends InputProps {
 const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    font-family: Aeroport Light;
+    font-weight: 300;
     color: #111114;
 `;
 
