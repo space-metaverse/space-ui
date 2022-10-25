@@ -26,5 +26,4 @@ storybook-static/
 
 lib/
 
-src/**/*.d.ts
 .storybook/**/*.d.ts

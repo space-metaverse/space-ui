@@ -41,13 +41,10 @@ module.exports = {
   rules: {
     'indent': ['error', 4],
     'no-bitwise': ['error', { allow: ['~'] }],
+    'arrow-parens': ['error', 'as-needed'],
     'space-unary-ops': [2, {
       words: true,
       nonwords: false,
-      overrides: {
-        '!': true,
-        '!!': true,
-      },
     }],
     'react/prop-types': 0,
     'react/jsx-indent': ['error', 4],

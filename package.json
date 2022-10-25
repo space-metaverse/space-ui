@@ -1,6 +1,6 @@
 {
     "name": "@space-metaverse-ag/space-ui",
-    "version": "0.2.11",
+    "version": "0.2.12",
     "module": "./index.js",
     "types": "./index.d.ts",
     "dependencies": {
@@ -13,7 +13,7 @@
     "scripts": {
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "build-lib": "tsc --outDir lib && copyfiles package.json README.md lib/ && cd src && copyfiles fonts/* icons/*.svg styled.d.ts styledTheme.d.ts styledTheme.ts ../lib/",
+        "build-lib": "tsc --outDir lib && copyfiles package.json README.md lib/ && cd src && copyfiles fonts/* icons/*.svg styled.d.ts ../lib/",
         "lint": "eslint --fix ."
     },
     "devDependencies": {
