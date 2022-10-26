@@ -1,7 +1,6 @@
 import {
     cloneElement,
     HTMLAttributes,
-    ReactNode,
     useEffect,
     useRef,
     useState,
@@ -11,6 +10,11 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 import { SVGProps } from "../../icons";
 
 type PositionProps = "top" | "bottom" | "left" | "right";
+
+type ElementInfo = {
+    width: number;
+    height: number;
+};
 
 export type PopoverOptionProps = {
     icon?: (props: SVGProps) => JSX.Element;
@@ -28,8 +32,8 @@ export type PopoverProps = HTMLAttributes<HTMLDivElement> & {
 const PopoverBox = styled.div<{
     show: boolean;
     position: PositionProps | undefined;
-    width: number;
-    height: number;
+    childInfo: ElementInfo;
+    popoverInfo: ElementInfo;
 }>`
     opacity: 1;
     pointer-events: auto;
@@ -64,25 +68,25 @@ const PopoverBox = styled.div<{
         if (props.position && props.position !== "bottom") {
             if (props.position === "top") {
                 return `
-                    margin-top: -${props.height}px;
+                    margin-top: -${props.popoverInfo.height + props.childInfo.height}px;
                 `;
             }
 
             if (props.position === "left") {
                 return `
-                    margin-left: -${props.width * 1.25}px;
+                    margin-left: -${props.popoverInfo.width - 2}px;
                 `;
             }
 
             if (props.position === "right") {
                 return `
-                    margin-left: ${props.width}px;
+                    margin-left: ${props.childInfo.width - 2}px;
                 `;
             }
         }
 
         return `
-                
+            margin-top: ${props.childInfo.height}px;
            `;
     }}
 `;
@@ -129,8 +133,8 @@ const Popover = ({
     ...rest
 }: PopoverProps) => {
     const [show, onShow] = useState(false);
-    const [height, onHeight] = useState(0);
-    const [width, onWidth] = useState(0);
+    const [childInfo, onChildInfo] = useState<ElementInfo>({ width: 0, height: 0 });
+    const [popoverInfo, onPopoverInfo] = useState<ElementInfo>({ width: 0, height: 0 });
 
     const toggle = () => onShow(!show);
 
@@ -141,17 +145,16 @@ const Popover = ({
     useOutsideClick(ref, () => onShow(false));
 
     useEffect(() => {
-        if (refPopover.current && refChild.current) {
-            const size = refPopover.current.getBoundingClientRect().height;
-            const sizeChild = refChild.current?.getBoundingClientRect().height;
+        if (refPopover.current) {
+            const { height, width } = refPopover.current.getBoundingClientRect();
 
-            onHeight(size + sizeChild);
+            onPopoverInfo({ height, width });
         }
 
         if (refChild.current) {
-            const size = refChild.current.getBoundingClientRect().width;
+            const { height, width } = refChild.current.getBoundingClientRect();
 
-            onWidth(size);
+            onChildInfo({ height, width });
         }
     }, []);
 
@@ -164,7 +167,7 @@ const Popover = ({
         <div ref={ref}>
             <div {...rest} role="presentation">
                 <div style={{ float: "left" }} ref={refChild}>
-                    {cloneElement(children, {
+                    {children && cloneElement(children, {
                         onClick: () => (!onHover ? toggle() : null),
                         ...mouseActions,
                     })}
@@ -176,8 +179,8 @@ const Popover = ({
                 show={show}
                 {...mouseActions}
                 position={position}
-                width={width}
-                height={height}
+                childInfo={childInfo}
+                popoverInfo={popoverInfo}
             >
                 {options &&
                     options.map(({ icon: Icon, label, callback }) => (
