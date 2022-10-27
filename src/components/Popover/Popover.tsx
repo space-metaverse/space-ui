@@ -5,7 +5,7 @@ import {
     useRef,
     useState,
 } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { SVGProps } from "../../icons";
 
@@ -63,21 +63,19 @@ const PopoverBox = styled.div<{
     ${(props) => {
         switch (props.position) {
             case "top":
-                return `
-                    margin-top: -${
-                        props.popoverInfo.height + props.childInfo.height
-                    }px;
+                return css`
+                    margin-top: -${props.popoverInfo.height + props.childInfo.height}px;
                 `;
             case "left":
-                return `
+                return css`
                     margin-left: -${props.popoverInfo.width - 2}px;
                 `;
             case "right":
-                return `
+                return css`
                     margin-left: ${props.childInfo.width - 2}px;
                 `;
             default:
-                return `
+                return css`
                     margin-top: ${props.childInfo.height}px;
                 `;
         }
