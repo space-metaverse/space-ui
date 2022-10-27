@@ -46,10 +46,6 @@ const PopoverBox = styled.div<{
     padding: 0.5rem;
     position: absolute;
     transition: all 0.2s ease-in-out 0s;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
     ${(props) => {
         if (props.show) {
             return `
@@ -65,29 +61,26 @@ const PopoverBox = styled.div<{
     }}
 
     ${(props) => {
-        if (props.position && props.position !== "bottom") {
-            if (props.position === "top") {
+        switch (props.position) {
+            case "top":
                 return `
-                    margin-top: -${props.popoverInfo.height + props.childInfo.height}px;
+                    margin-top: -${
+                        props.popoverInfo.height + props.childInfo.height
+                    }px;
                 `;
-            }
-
-            if (props.position === "left") {
+            case "left":
                 return `
                     margin-left: -${props.popoverInfo.width - 2}px;
                 `;
-            }
-
-            if (props.position === "right") {
+            case "right":
                 return `
                     margin-left: ${props.childInfo.width - 2}px;
                 `;
-            }
+            default:
+                return `
+                    margin-top: ${props.childInfo.height}px;
+                `;
         }
-
-        return `
-            margin-top: ${props.childInfo.height}px;
-           `;
     }}
 `;
 
@@ -133,8 +126,14 @@ const Popover = ({
     ...rest
 }: PopoverProps) => {
     const [show, onShow] = useState(false);
-    const [childInfo, onChildInfo] = useState<ElementInfo>({ width: 0, height: 0 });
-    const [popoverInfo, onPopoverInfo] = useState<ElementInfo>({ width: 0, height: 0 });
+    const [childInfo, onChildInfo] = useState<ElementInfo>({
+        width: 0,
+        height: 0,
+    });
+    const [popoverInfo, onPopoverInfo] = useState<ElementInfo>({
+        width: 0,
+        height: 0,
+    });
 
     const toggle = () => onShow(!show);
 
@@ -146,7 +145,8 @@ const Popover = ({
 
     useEffect(() => {
         if (refPopover.current) {
-            const { height, width } = refPopover.current.getBoundingClientRect();
+            const { height, width } =
+                refPopover.current.getBoundingClientRect();
 
             onPopoverInfo({ height, width });
         }
@@ -156,7 +156,7 @@ const Popover = ({
 
             onChildInfo({ height, width });
         }
-    }, []);
+    }, [refPopover, refChild]);
 
     const mouseActions = {
         onMouseEnter: () => (onHover ? onShow(true) : null),
@@ -167,10 +167,11 @@ const Popover = ({
         <div ref={ref}>
             <div {...rest} role="presentation">
                 <div style={{ float: "left" }} ref={refChild}>
-                    {children && cloneElement(children, {
-                        onClick: () => (!onHover ? toggle() : null),
-                        ...mouseActions,
-                    })}
+                    {children &&
+                        cloneElement(children, {
+                            onClick: () => (!onHover ? toggle() : null),
+                            ...mouseActions,
+                        })}
                 </div>
             </div>
 
