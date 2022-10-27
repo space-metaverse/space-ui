@@ -1,6 +1,8 @@
 import {
     cloneElement,
     HTMLAttributes,
+    JSXElementConstructor,
+    ReactElement,
     useEffect,
     useRef,
     useState,
@@ -166,7 +168,7 @@ const Popover = ({
             <div {...rest} role="presentation">
                 <div style={{ float: "left" }} ref={refChild}>
                     {children &&
-                        cloneElement(children, {
+                        cloneElement((children as ReactElement<any, string | JSXElementConstructor<any>>), {
                             onClick: () => (!onHover ? toggle() : null),
                             ...mouseActions,
                         })}
