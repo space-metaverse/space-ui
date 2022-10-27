@@ -30,9 +30,7 @@ const SkeletonStyled = styled.div<{
         pointer-events: none;
         position: absolute;
         top: 0;
-        transition-duration: 0.3s;
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s 1s cubic-bezier(0.4, 0, 0.2, 1);
         width: 100%;
         z-index: 10;
     }
@@ -57,15 +55,8 @@ const SkeletonStyled = styled.div<{
 
         return "";
     }}
-    ${(props) => {
-        if (props.rounded) {
-            return `
-                border-radius: 9999px;
-            `;
-        }
 
-        return "";
-    }}
+    ${(props) => (props.rounded ? "border-radius: 9999px" : "")};
 `;
 
 const Skeleton = ({
