@@ -185,7 +185,7 @@ const CustomReactSVG = (props: CustomSVGProps) => (
     />
 );
 
-interface SVGProps extends Omit<CustomSVGProps, 'svg'> { }
+export interface SVGProps extends Omit<CustomSVGProps, 'svg'> { }
 
 const Accessibility = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AccessibilitySVG)} {...props} />
 const Alert = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AlertSVG)} {...props} />;
