@@ -41,6 +41,16 @@ const Input = styled.input<{ isError: boolean }>`
     ${props => props.isError && css`
         background-color: #f5001803;
     `}
+    ${props => props.type === 'number' && css`
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        &[type=number] {
+            -moz-appearance: textfield;
+        }
+    `}
 `;
 
 const Plus = styled(PlusIcon)`
