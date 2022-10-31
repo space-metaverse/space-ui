@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TextInput } from '../../components/TextInput/TextInput';
+import { TextInput } from '../../components/TextInput';
 import styled from 'styled-components';
 
 const CustomTextInput = styled(TextInput)`
