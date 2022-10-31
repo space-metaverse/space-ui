@@ -4,9 +4,7 @@ import { TextInput } from '../../components/TextInput';
 import styled from 'styled-components';
 
 const CustomTextInput = styled(TextInput)`
-    input {
-        max-width: 20rem;
-    }
+    max-width: 20rem;
 `
 
 export default {

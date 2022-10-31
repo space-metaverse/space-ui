@@ -1,71 +1,93 @@
 import styled, { css } from 'styled-components';
 
+import { rgba } from '../../helpers';
 import { InputProps } from './types';
 
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-weight: 300;
-    color: #111114;
-`;
-
 const Label = styled.label`
-    padding-bottom: 0.5rem;
-    font-weight: 700;
+    ${({ theme }) => theme.fonts.size.sm};
+    color: ${({ theme }) => theme.colors.dark['600']};
+    font-weight: ${({ theme }) => theme.fonts.weight.semibold};
+    margin-bottom: 0.5rem;
 `;
 
-const Input = styled.input<InputProps & { showPassword: boolean, isHovering: boolean, isFocused: boolean }>`
-    padding: 0.75rem 1rem;
-    font-size: 1.2rem;
-    border: 1px solid #DCDCE0;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    border-radius: 12px;
-    outline: none;
+const Input = styled.input`
+    ${({ theme }) => theme.fonts.size.md};
+    color: ${({ theme }) => theme.colors.dark['800']};
     width: 100%;
-    ${props => props.disabled && css`
-        opacity: 0.5;
-        cursor: not-allowed;
-    `}
-    ${props => props.isError && css`
-        border: 1px solid #F50018;
-        background-color: #F500180D;
-    `}
-    ${props => (props.type === 'password' || props.showPassword) && css`
-        border-radius: 12px 0 0 12px;
-        border-right: none !important;
-    `}
-    ${props => (props.isFocused || props.isHovering) && css`
-        border: 1px solid ${props.isError ? '#F50018' : '#8900FF'};
-    `}
+    border: none;
+    outline: none;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+
+    &::placeholder {
+        color: ${({ theme }) => theme.colors.dark['500']};
+    }
 `;
 
 const InputGrid = styled.div`
+    border: ${({ theme }) => `1px solid ${theme.colors.dark['300']}`};
     display: flex;
+    transition: ${({ theme }) => theme.transitions.ease};
     align-items: center;
+    border-radius: ${({ theme }) => theme.radius.xl};
 `;
 
-const PasswordToggleWrapper = styled.div<{
-    isError: boolean,
-    isHovering: boolean,
-    isFocused: boolean,
-    disabled: boolean,
-}>`
-    border: 1px solid #DCDCE0;
-    border-radius: 0 12px 12px 0;
-    border-left: none !important;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    padding: 0.7rem 1rem;
+const PasswordToggleWrapper = styled.div`
     cursor: pointer;
-    ${props => props.disabled && css`
-        opacity: 0.5;
-        cursor: not-allowed;
+    padding: 0.5rem 1rem;
+    transition: ${({ theme }) => theme.transitions.ease};
+`;
+
+const focused = css`
+    ${InputGrid} {
+        border-color: ${({ theme }) => theme.colors.purple['400']};
+    }
+`;
+
+const Wrapper = styled.div<InputProps>`
+    display: flex;
+    font-family: ${({ theme }) => theme.fonts.family.body};
+    flex-direction: column;
+
+    &:hover {
+        ${focused}
+    }
+
+    ${({ isFocused, disabled }) => !disabled && isFocused && css`
+        ${focused}
     `}
-    ${props => props.isError && css`
-        border: 1px solid #F50018;
-        background-color: #F500180D;
+
+    ${({ theme, disabled, isError }) => !isError && disabled && css`
+        ${Label} {
+            color: ${theme.colors.dark['500']};
+        }
+
+        &:hover {
+            ${InputGrid} {
+                border-color: ${theme.colors.dark['200']};
+            }
+        }
+
+        ${Input} {
+            cursor: not-allowed;
+        }
+
+        ${InputGrid} {
+            border-color: ${theme.colors.dark['200']};
+        }
     `}
-    ${props => (props.isFocused || props.isHovering) && css`
-        border: 1px solid ${props.isError ? '#F50018' : '#8900FF'};
+
+    ${({ theme, isError }) => isError && css`
+        ${InputGrid} {
+            border: 1px solid ${theme.colors.red['500']};
+            background-color: ${rgba(theme.colors.red['500'], '.05')};
+        }
+
+        &:hover {
+            ${InputGrid} {
+                border: 1px solid ${theme.colors.red['500']};
+            }
+        }
     `}
 `;
 
