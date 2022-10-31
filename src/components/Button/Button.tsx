@@ -2,8 +2,8 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import styled, { css } from 'styled-components';
 
-type ButtonSize = 'small' | 'medium' | 'large';
-type ButtonColor = 'green' | 'blue' | 'red' | 'orange' | 'purple' | 'grey' | 'white';
+export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonColor = 'green' | 'blue' | 'red' | 'orange' | 'purple' | 'grey' | 'white';
 
 export const StyledButton = styled.button<{
     size: ButtonSize,
