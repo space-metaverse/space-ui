@@ -12,13 +12,12 @@ import { TextInputProps } from './types';
 const TextInput = ({
     type,
     label = 'Label',
-    disabled = false,
-    className,
     value = '',
     isError = false,
-    placeholder = '',
-    showPassword = false,
+    disabled = false,
     onChange,
+    className,
+    showPassword = false,
     ...props
 }: TextInputProps) => {
     const [valueInternal, setValueInternal] = useState<string>('');
@@ -53,7 +52,6 @@ const TextInput = ({
                     onChange={handleChange}
                     disabled={disabled}
                     isError={isError}
-                    placeholder={placeholder}
                     value={valueToUse}
                     showPassword={showPasswordToUse}
                     isHovering={isHovering}

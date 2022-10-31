@@ -7,6 +7,7 @@ export default styled.button.attrs<StyledButtonProps>(({ size, color }) => ({
     size: size || 'medium',
     color: color || 'blue',
 }))<StyledButtonProps>`
+    ${({ theme }) => theme.fonts.size.md};
     color: ${({ theme }) => theme.colors.white};
     border: none;
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -23,21 +24,18 @@ export default styled.button.attrs<StyledButtonProps>(({ size, color }) => ({
         switch (size) {
             case 'medium':
                 return css`
-                    ${({ theme }) => theme.fonts.size.lg};
-                    padding: 1rem 1rem;
+                    padding: 1rem 1.25rem;
                     min-width: 12rem;
                 `;
             case 'large':
                 return css`
-                    ${({ theme }) => theme.fonts.size.xl};
                     padding: 1.25rem 1.5rem;
                     min-width: 14rem;
                 `;
 
             default:
                 return css`
-                    ${({ theme }) => theme.fonts.size.sm};
-                    padding: 0.75rem 1rem;
+                    padding: 0.625rem 1rem;
                     min-width: 10rem;
                 `;
         }
