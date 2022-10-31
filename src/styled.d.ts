@@ -34,6 +34,7 @@ declare module 'styled-components' {
             lg: string;
             xl: string;
             none: string;
+            full: string;
             '2xl': string;
             '3xl': string;
         };
@@ -74,16 +75,19 @@ declare module 'styled-components' {
             green: {
                 100: string;
                 400: string;
+                500: string;
             },
 
             purple: {
                 100: string;
                 400: string;
+                500: string;
             },
 
             orange: {
                 100: string;
                 400: string;
+                500: string;
             },
 
             transparent: string;

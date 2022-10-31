@@ -55,6 +55,7 @@ const theme: DefaultTheme = ({
         lg: '8px',
         xl: '12px',
         none: '0px',
+        full: '999px',
         '2xl': '16px',
         '3xl': '24px',
     },
@@ -95,16 +96,19 @@ const theme: DefaultTheme = ({
         green: {
             100: 'rgba(0, 204, 95, 0.12)',
             400: '#00CC5F',
+            500: '#02C15B',
         },
 
         purple: {
             100: 'rgba(137, 0, 255, 0.08)',
             400: '#8900FF',
+            500: '#7E00EB',
         },
 
         orange: {
             100: 'rgba(255, 120, 0, 0.12)',
             400: '#FF7800',
+            500: '#ED6f00',
         },
 
         transparent: 'transparent',
