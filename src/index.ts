@@ -11,3 +11,4 @@ export * from './components/Radio/Radio';
 export * from './components/Tabs/Tabs';
 export * from './components/Table/Table';
 export * from './components/Alert/Alert';
+export * from './components/ImageInput/ImageInput';

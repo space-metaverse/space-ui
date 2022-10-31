@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof ImageInput> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    header: "Have your own avatar?",
+    header: "Upload your Avatar",
     button: {
         label: "Upload",
         size: "medium",
