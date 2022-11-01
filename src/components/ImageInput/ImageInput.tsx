@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useRef } from "react";
 import styled from "styled-components";
 import { Delete } from "../../icons";
 import { Button, ButtonColor, ButtonSize } from "../Button/Button";
-import dummyAvatar from "../../stories/assets/avatar.png";
+import dummyAvatar from "../assets/avatar.png";
 
 interface ImageInputProps extends HTMLAttributes<HTMLDivElement> {
     header: string;
