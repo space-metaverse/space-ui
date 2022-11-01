@@ -41,6 +41,7 @@ declare module 'styled-components' {
 
         colors: {
             sky: {
+                100: string;
                 400: string;
             },
 

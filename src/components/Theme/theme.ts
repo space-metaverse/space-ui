@@ -62,6 +62,7 @@ const theme: DefaultTheme = ({
 
     colors: {
         sky: {
+            100: 'rgba(0, 217, 245, .12)',
             400: '#00D9F5',
         },
 
