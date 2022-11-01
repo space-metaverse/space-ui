@@ -69,7 +69,6 @@ const TextInput = ({
                     onFocus={handleFocus}
                     disabled={disabled}
                     onChange={handleChange}
-                    isFocused={isFocused}
                     {...props}
                 />
                 {
