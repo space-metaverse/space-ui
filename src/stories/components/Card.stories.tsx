@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Card } from '../../components/Card/Card';
+import { Card } from '../../components/Card';
 import { Chip } from '../../components/Chip/Chip';
 import nikeImage from '../assets/nike.png';
 
@@ -19,7 +19,7 @@ Default.args = {
     image: nikeImage,
     children: <>
         <h2>Soho Ski Club</h2>
-        <p>Phygital</p>
+        <p style={{ margin: '8px 0' }} >Phygital</p>
         <small>Price: $123.12</small>
         <Chip color="blue" label="Buy Me" style={{ marginTop: '1rem' }} />
     </>,
