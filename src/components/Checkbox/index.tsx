@@ -1,4 +1,4 @@
-import Styled from './styles';
+import CheckboxStyles from './styles';
 import { CheckboxProps } from './types';
 
 const Checkbox = ({
@@ -8,19 +8,23 @@ const Checkbox = ({
     onChange,
     ...props
 }: CheckboxProps) => (
-    <Styled.Label
+    <CheckboxStyles.Label
         {...props}
         disabled={disabled}
     >
-        <Styled.Input
+        <CheckboxStyles.Input
             type="checkbox"
             checked={isChecked}
             onChange={onChange}
             disabled={disabled}
         />
-        <Styled.Checkmark />
+        <CheckboxStyles.Checkmark />
         {label}
-    </Styled.Label>
+    </CheckboxStyles.Label>
 );
 
-export { Checkbox };
+export {
+    Checkbox,
+    CheckboxStyles,
+    type CheckboxProps,
+};
