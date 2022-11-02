@@ -1,4 +1,4 @@
-import { ChangeEvent, HTMLAttributes } from 'react';
+import type { ChangeEvent, HTMLAttributes } from 'react';
 
 export interface RadioProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
     options: string[];
