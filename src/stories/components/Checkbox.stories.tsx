@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
+import { Checkbox } from '../../components/Checkbox';
 
 export default {
     title: 'Example/Checkbox',
     component: Checkbox,
     argTypes: {
-
+        isChecked: {
+            control: { type: 'boolean' },
+        },
     },
 } as ComponentMeta<typeof Checkbox>;
 

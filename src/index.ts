@@ -3,7 +3,7 @@ export * from './components/Modal';
 export * from './components/Button';
 export * from './components/TextInput';
 export * from './components/NumberInput/NumberInput';
-export * from './components/Checkbox/Checkbox';
+export * from './components/Checkbox';
 export * from './components/Chip/Chip';
 export * from './components/Select/Select';
 export * from './components/Card';
