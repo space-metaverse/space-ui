@@ -1,7 +1,7 @@
 import { useCallback, useState, useMemo } from 'react';
 
-import Styled from './styles';
-import { TabsProps } from './types';
+import TabsStyles from './styles';
+import type { TabsProps } from './types';
 
 const Tabs = ({
     tabs = [],
@@ -19,18 +19,22 @@ const Tabs = ({
     }, [onChange]);
 
     return (
-        <Styled.Wrapper {...rest}>
+        <TabsStyles.Wrapper {...rest}>
             {tabs.map(tab => (
-                <Styled.Tab
+                <TabsStyles.Tab
                     key={tab}
                     onClick={() => handleTabChange(tab)}
                     activeTab={tabToUse === tab}
                 >
                     {tab}
-                </Styled.Tab>
+                </TabsStyles.Tab>
             ))}
-        </Styled.Wrapper>
+        </TabsStyles.Wrapper>
     );
 };
 
-export { Tabs };
+export {
+    Tabs,
+    TabsStyles,
+    type TabsProps,
+};
