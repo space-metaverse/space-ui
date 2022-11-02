@@ -22,7 +22,7 @@ const InputWrapper = styled.div`
     color: #111114;
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
     padding-bottom: 0.5rem;
     font-weight: 700;
 `;
