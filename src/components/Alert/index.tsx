@@ -6,7 +6,7 @@ import {
 } from '../../icons';
 import { theme } from '../Theme';
 import AlertStyles from './styles';
-import { AlertProps } from './types';
+import type { AlertProps } from './types';
 
 const Alert = ({
     text,

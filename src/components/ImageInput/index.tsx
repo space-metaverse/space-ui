@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import dummyAvatar from '../../assets/avatar.png';
 import ImageInputStyles from './styles';
-import { ImageInputProps } from './types';
+import type { ImageInputProps } from './types';
 
 const ImageInput = ({
     file,

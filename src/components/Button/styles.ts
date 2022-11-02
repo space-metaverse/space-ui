@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { rgba } from '../../helpers';
-import { StyledButtonProps } from './types';
+import type { StyledButtonProps } from './types';
 
 export default styled.button.attrs<StyledButtonProps>(({ size, color }) => ({
     size: size || 'medium',

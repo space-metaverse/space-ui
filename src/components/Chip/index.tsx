@@ -1,5 +1,5 @@
 import ChipStyles from './styles';
-import { ChipProps } from './types';
+import type { ChipProps } from './types';
 
 const Chip = ({
     label = 'Chip',

@@ -1,5 +1,5 @@
 import CheckboxStyles from './styles';
-import { CheckboxProps } from './types';
+import type { CheckboxProps } from './types';
 
 const Checkbox = ({
     label,
