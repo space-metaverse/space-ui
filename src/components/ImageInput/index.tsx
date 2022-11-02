@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import dummyAvatar from '../../stories/assets/avatar.png';
+import dummyAvatar from '../../assets/avatar.png';
 import Styled from './styles';
 import { ImageInputProps } from './types';
 
@@ -42,7 +42,6 @@ const ImageInput = ({
             {file && file?.name && (
                 <Styled.IconDelete
                     onClick={() => {
-                        ref.current?.value && (ref.current.value = '');
                         onFile(null);
                         setAvatar(showDummyAvatar ? dummyAvatar : null);
                     }}
