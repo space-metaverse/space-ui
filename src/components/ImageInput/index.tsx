@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
 import dummyAvatar from '../../assets/avatar.png';
-import Styled from './styles';
+import ImageInputStyles from './styles';
 import { ImageInputProps } from './types';
 
 const ImageInput = ({
@@ -30,17 +30,17 @@ const ImageInput = ({
     };
 
     return (
-        <Styled.Backdrop width={width}>
-            <Styled.Avatar avatar={avatar} />
+        <ImageInputStyles.Backdrop width={width}>
+            <ImageInputStyles.Avatar avatar={avatar} />
 
-            <Styled.Text>
+            <ImageInputStyles.Text>
                 {changeLabelWhenFileSelected && file?.name
                     ? file?.name
                     : header}
-            </Styled.Text>
+            </ImageInputStyles.Text>
 
             {file && file?.name && (
-                <Styled.IconDelete
+                <ImageInputStyles.IconDelete
                     onClick={() => {
                         onFile(null);
                         setAvatar(showDummyAvatar ? dummyAvatar : null);
@@ -48,7 +48,7 @@ const ImageInput = ({
                 />
             )}
 
-            <Styled.Input
+            <ImageInputStyles.Input
                 ref={ref}
                 name="file"
                 type="file"
@@ -56,13 +56,17 @@ const ImageInput = ({
                 onChange={handleFile}
             />
 
-            <Styled.Action
+            <ImageInputStyles.Action
                 {...button}
                 size={button.size || 'small'}
                 onClick={() => ref.current?.click()}
             />
-        </Styled.Backdrop>
+        </ImageInputStyles.Backdrop>
     );
 };
 
-export { ImageInput };
+export {
+    ImageInput,
+    ImageInputStyles,
+    type ImageInputProps,
+};
