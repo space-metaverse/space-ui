@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Chip } from '../../components/Chip/Chip';
+import { Chip } from '../../components/Chip';
 import { Table } from '../../components/Table/Table';
 import { Share } from '../../icons';
 import batman from '../assets/batman.png';

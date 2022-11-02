@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Popover } from "../../components/Popover/Popover";
-import { Button } from "../../components/Button/Button";
+import { Button } from "../../components/Button";
 import { Edit, Delete } from "../../icons";
 
 export default {
