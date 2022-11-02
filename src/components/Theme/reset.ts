@@ -7,6 +7,7 @@ export default css`
         box-sizing: border-box;
     }
 
+    p,
     h1,
     h2,
     h3,
@@ -39,7 +40,6 @@ export default css`
     textarea {
         white-space: revert;
     }
-
 
     meter {
         -webkit-appearance: revert;
