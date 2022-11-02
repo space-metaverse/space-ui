@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Card } from '../../components/Card';
-import { Chip } from '../../components/Chip/Chip';
+import { Chip } from '../../components/Chip';
 import nikeImage from '../assets/nike.png';
 
 export default {
