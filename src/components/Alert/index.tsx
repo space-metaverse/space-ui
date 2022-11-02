@@ -5,7 +5,7 @@ import {
     Alert as AlertSvg,
 } from '../../icons';
 import { theme } from '../Theme';
-import Styled from './styles';
+import AlertStyles from './styles';
 import { AlertProps } from './types';
 
 const Alert = ({
@@ -14,22 +14,26 @@ const Alert = ({
     withIcon = false,
     ...props
 }: AlertProps) => (
-    <Styled.Wrapper
+    <AlertStyles.Wrapper
         {...props}
         type={type}
     >
         {withIcon && (
-            <Styled.IconWrapper>
+            <AlertStyles.IconWrapper>
                 {type === 'success' && <Check stroke={theme.colors.green['400']} />}
                 {type === 'error' && <AlertSvg stroke={theme.colors.red['400']} />}
                 {type === 'warning' && <Error stroke={theme.colors.orange['400']} />}
                 {type === 'info' && <Info stroke={theme.colors.blue['400']} />}
-            </Styled.IconWrapper>
+            </AlertStyles.IconWrapper>
         )}
-        <Styled.TextWrapper>
+        <AlertStyles.TextWrapper>
             {text}
-        </Styled.TextWrapper>
-    </Styled.Wrapper>
+        </AlertStyles.TextWrapper>
+    </AlertStyles.Wrapper>
 );
 
-export { Alert };
+export {
+    Alert,
+    AlertStyles,
+    type AlertProps,
+};
