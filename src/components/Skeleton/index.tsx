@@ -1,13 +1,17 @@
-import Styled from './styles';
-import { SkeletonProps } from './types';
+import SkeletonStyles from './styles';
+import type { SkeletonProps } from './types';
 
 const Skeleton = ({
     children,
     ...rest
 }: SkeletonProps) => (
-    <Styled {...rest}>
+    <SkeletonStyles {...rest}>
         {children}
-    </Styled>
+    </SkeletonStyles>
 );
 
-export { Skeleton };
+export {
+    Skeleton,
+    SkeletonStyles,
+    type SkeletonProps,
+};

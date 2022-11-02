@@ -1,4 +1,4 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
     run?: boolean;
