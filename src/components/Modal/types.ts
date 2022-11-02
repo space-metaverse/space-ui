@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 
-import type { ButtonProps } from '../Button/types';
+import type { ButtonProps } from '../Button';
 
 type ActionProps = Omit<ButtonProps, 'size' | 'color'> & {
     size?: ButtonProps['size'];
