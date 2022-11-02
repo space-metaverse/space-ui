@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { rgba } from '../../helpers';
-import { InputProps } from './types';
+import type { InputProps } from './types';
 
 const Label = styled.label`
     ${({ theme }) => theme.fonts.size.sm};
