@@ -7,7 +7,7 @@ export * from './components/Checkbox';
 export * from './components/Chip';
 export * from './components/Select/Select';
 export * from './components/Card';
-export * from './components/Radio/Radio';
+export * from './components/Radio';
 export * from './components/Tabs/Tabs';
 export * from './components/Table/Table';
 export * from './components/Alert';
