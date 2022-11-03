@@ -60,6 +60,7 @@ const Button = styled.button`
     font-weight: ${({ theme }) => theme.fonts.weight.bold};
     border-radius: ${({ theme }) => theme.radius.lg};
     text-transform: uppercase;
+    letter-spacing: 1px;
     background-color: transparent;
 
     &,

@@ -15,15 +15,15 @@ export type PopoverOptionProps = {
     callback: VoidFunction;
 };
 
-export type PopoverProps = HTMLAttributes<HTMLDivElement> & {
+export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     options: PopoverOptionProps[];
     onHover?: boolean;
     position?: PositionProps;
     keepOpenOnClick?: boolean;
-};
+}
 
-export type PopoverStylesProps = Pick<PopoverProps, 'position'> & {
+export interface PopoverStylesProps extends Pick<PopoverProps, 'position'> {
     show: boolean;
     childInfo: ElementInfo;
     popoverInfo: ElementInfo;
-};
+}
