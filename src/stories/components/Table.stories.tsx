@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Chip } from '../../components/Chip';
-import { Table } from '../../components/Table/Table';
+import { Table } from '../../components/Table';
 import { Share } from '../../icons';
 import batman from '../assets/batman.png';
 import blueShoesImage from '../assets/blue-shoes.png';
@@ -25,14 +25,13 @@ const CustomTableCell = styled.div`
 `;
 
 const Image = styled.img`
-    height: 5rem;
-    width: 5rem;
+    height: 4rem;
+    width: 4rem;
     border-radius: 20px;
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-    columns: ['Space Name', 'Users', 'Products', 'Events', 'Orders', 'Action', 'Share'],
     rows: [
         {
             spaceName: <CustomTableCell>
@@ -74,6 +73,8 @@ Default.args = {
             share: <Share style={{ height: '2rem' }} />,
         },
     ],
+    columns: ['Space Name', 'Users', 'Products', 'Events', 'Orders', 'Action', 'Share'],
+    withBorder: false,
 };
 Default.parameters = {
     controls: {

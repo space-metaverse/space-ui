@@ -10,6 +10,6 @@ export * from './components/Card';
 export * from './components/Radio';
 export * from './components/Skeleton';
 export * from './components/Tabs';
-export * from './components/Table/Table';
+export * from './components/Table';
 export * from './components/Alert';
 export * from './components/ImageInput';
