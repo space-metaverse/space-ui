@@ -1,14 +1,14 @@
 {
     "name": "@space-metaverse-ag/space-ui",
-    "version": "0.2.15",
+    "version": "0.2.16",
     "module": "./index.js",
     "types": "./index.d.ts",
     "dependencies": {
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "react-svg": "^15.1.9",
+        "react-svg": "^15.1.11",
         "styled-components": "^5.3.6",
-        "typescript": "^4.8.3"
+        "typescript": "^4.8.4"
     },
     "scripts": {
         "storybook": "start-storybook -p 6006",
@@ -17,16 +17,16 @@
         "lint": "eslint --fix ."
     },
     "devDependencies": {
-        "@storybook/addon-actions": "^6.5.11",
-        "@storybook/addon-essentials": "^6.5.11",
-        "@storybook/addon-interactions": "^6.5.11",
-        "@storybook/addon-links": "^6.5.11",
-        "@storybook/addon-measure": "^6.5.12",
-        "@storybook/addon-viewport": "^6.5.12",
-        "@storybook/builder-webpack5": "^6.5.11",
-        "@storybook/manager-webpack5": "^6.5.11",
-        "@storybook/node-logger": "^6.5.11",
-        "@storybook/react": "^6.5.11",
+        "@storybook/addon-actions": "^6.5.13",
+        "@storybook/addon-essentials": "^6.5.13",
+        "@storybook/addon-interactions": "^6.5.13",
+        "@storybook/addon-links": "^6.5.13",
+        "@storybook/addon-measure": "^6.5.13",
+        "@storybook/addon-viewport": "^6.5.13",
+        "@storybook/builder-webpack5": "^6.5.13",
+        "@storybook/manager-webpack5": "^6.5.13",
+        "@storybook/node-logger": "^6.5.13",
+        "@storybook/react": "^6.5.13",
         "@types/node": "^18.7.18",
         "@types/react": "^18.0.19",
         "@types/react-dom": "^18.0.6",

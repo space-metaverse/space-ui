@@ -48,14 +48,14 @@ const Base = styled.div<StyledModalProps>`
 `;
 
 const Head = styled.div<{ shadow: boolean }>`
-    padding: 24px 32px;
+    padding: 1.5rem 2rem;
     display: flex;
     position: relative;
     align-items: center;
 
     > div {
         color: ${({ theme }) => theme.colors.dark[500]};
-        right: 32px;
+        right: 2rem;
         cursor: pointer;
         position: absolute;
     }
@@ -80,14 +80,14 @@ const Title = styled.h6`
 
 const Body = styled.div`
     display: flex;
-    padding: 32px;
+    padding: 2rem;
     flex-direction: column;
 `;
 
 const Footer = styled.div`
-    gap: 16px;
+    gap: 1rem;
     display: flex;
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
     box-shadow: ${({ theme }) => `0px 0px 48px ${rgba(theme.colors.dark[800], '.12')}`};
     align-items: center;
     justify-content: flex-end;

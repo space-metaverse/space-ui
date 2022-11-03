@@ -8,8 +8,8 @@ import {
 
 import { useOutsideClick } from '../../hooks';
 import { Close as CloseIcon } from '../../icons';
-import { Button } from '../Button/Button';
-import Styled from './styles';
+import { Button } from '../Button';
+import ModalStyles from './styles';
 import type { ModalProps, ModalBaseProps } from './types';
 
 const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
@@ -45,34 +45,34 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
     useOutsideClick(wrapper, () => outsideClick && outside());
 
     return (
-        <Styled.Base
+        <ModalStyles.Base
             {...rest}
             show={show}
             role="dialog"
             aria-modal={show}
-            aria-hidden={! show}
+            aria-hidden={!show}
             aria-labelledby="dialog"
         >
-            <Styled.Wrapper ref={wrapper}>
+            <ModalStyles.Wrapper ref={wrapper}>
                 {(close || title) && (
-                    <Styled.Head shadow={shadow}>
+                    <ModalStyles.Head shadow={shadow}>
                         {title && (
-                            <Styled.Title>
+                            <ModalStyles.Title>
                                 {title}
-                            </Styled.Title>
+                            </ModalStyles.Title>
                         )}
 
                         {close && <CloseIcon onClick={closed} />}
-                    </Styled.Head>
+                    </ModalStyles.Head>
                 )}
 
-                <Styled.Body>
+                <ModalStyles.Body>
                     {children}
-                </Styled.Body>
+                </ModalStyles.Body>
 
                 {actions && (
-                    <Styled.Footer>
-                        {!! actions.secondary && (
+                    <ModalStyles.Footer>
+                        {!!actions.secondary && (
                             <Button
                                 {...actions.secondary}
                                 size={actions.secondary.size || 'medium'}
@@ -80,17 +80,17 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
                             />
                         )}
 
-                        {!! actions.primary && (
+                        {!!actions.primary && (
                             <Button
                                 {...actions.primary}
                                 size={actions.primary.size || 'medium'}
                                 color={actions.primary.color || 'blue'}
                             />
                         )}
-                    </Styled.Footer>
+                    </ModalStyles.Footer>
                 )}
-            </Styled.Wrapper>
-        </Styled.Base>
+            </ModalStyles.Wrapper>
+        </ModalStyles.Base>
     );
 };
 
@@ -98,5 +98,6 @@ const Modal = memo(forwardRef(Component));
 
 export {
     Modal,
+    ModalStyles,
     type ModalProps,
 };
