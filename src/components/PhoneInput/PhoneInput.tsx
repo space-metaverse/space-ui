@@ -1,9 +1,11 @@
-import IntlTelInput from "react-intl-tel-input";
-import "react-intl-tel-input/dist/main.css";
-import styled, { css } from "styled-components";
+import { useCallback, useEffect, useState } from 'react';
+import IntlTelInput from 'react-intl-tel-input';
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Label } from "../TextInput/TextInput";
+import 'react-intl-tel-input/dist/main.css';
+import styled, { css } from 'styled-components';
+
+import arrow from '../../assets/arrow.svg';
+import { Label } from '../TextInput/TextInput';
 
 type PhoneInputProps = {
     preferredCountries: string[];
@@ -23,17 +25,9 @@ const StyledPhoneInput = styled.div<{
     padding: 12px 12px 12px 16px;
     border-radius: 12px;
 
-    ${(props) =>
-        (props.isFocused || props.isHovering) &&
-        css`
-            border: 1px solid ${props.isError ? "#F50018" : "#8900FF"};
-        `}
+    ${props => (props.isFocused || props.isHovering) && css` border: 1px solid ${props.isError ? '#F50018' : '#8900FF'}; `}
 
-    ${(props) =>
-        props.withLabel &&
-        css`
-            margin-top: 8px;
-        `}
+    ${props => props.withLabel && css` margin-top: 8px; `}
 
     .selected-flag {
         border-right: 1px solid #dcdce0;
@@ -58,12 +52,30 @@ const StyledPhoneInput = styled.div<{
             color: #b0b0b8;
         }
     }
+
+    .intl-tel-input .flag-container .arrow.up:after {
+        content: " ";
+    }
+
+    .intl-tel-input .flag-container .arrow.down:after {
+        content: " ";
+    }
+
+    .intl-tel-input .flag-container .arrow.down, .intl-tel-input .flag-container .arrow.up {
+        background: url(${arrow}) no-repeat center;
+        width: 10px;
+        height: 10px;
+    }
+
+    .intl-tel-input .flag-container .arrow.up {
+        transform: rotate(180deg);
+    }
 `;
 
 const PhoneInput = ({
-    preferredCountries = ["us", "ca", "br"],
+    preferredCountries = ['us', 'ca', 'br'],
     isError = false,
-    value = "",
+    value = '',
     label,
     onChange = () => {},
     ...props
@@ -73,25 +85,18 @@ const PhoneInput = ({
     const [inputValue, setInputValue] = useState<string>(value);
     const [key, setKey] = useState<number>(0);
 
-    const ref = useRef(null);
-
     useEffect(() => {
         setInputValue(value);
     }, [value]);
 
     useEffect(() => {
-        setKey(key + 1);
+        setKey(k => k + 1);
     }, [preferredCountries]);
-
-    useEffect(() => {
-        if (ref.current) {
-            console.log(ref);
-        }
-    }, []);
 
     return (
         <>
             {label && <Label>{label}</Label>}
+
             <StyledPhoneInput
                 key={key}
                 withLabel={!!label}
@@ -103,27 +108,20 @@ const PhoneInput = ({
                 {...props}
             >
                 <IntlTelInput
-                    ref={ref}
                     value={inputValue}
                     preferredCountries={preferredCountries}
                     onPhoneNumberChange={(
                         isValid,
-                        value,
+                        newValue,
                         selectedCountryData,
                         fullNumber,
-                        extension
+                        extension,
                     ) => {
-                        setInputValue(value);
+                        setInputValue(newValue);
                         onChange(fullNumber);
                     }}
-                    onPhoneNumberFocus={useCallback(
-                        () => setIsFocused(true),
-                        []
-                    )}
-                    onPhoneNumberBlur={useCallback(
-                        () => setIsFocused(false),
-                        []
-                    )}
+                    onPhoneNumberFocus={useCallback(() => setIsFocused(true), [])}
+                    onPhoneNumberBlur={useCallback(() => setIsFocused(false), [])}
                 />
             </StyledPhoneInput>
         </>
