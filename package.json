@@ -1,6 +1,6 @@
 {
     "name": "@space-metaverse-ag/space-ui",
-    "version": "0.2.15",
+    "version": "0.2.16",
     "module": "./index.js",
     "types": "./index.d.ts",
     "dependencies": {
