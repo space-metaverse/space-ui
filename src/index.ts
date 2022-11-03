@@ -11,6 +11,7 @@ export * from './components/Select';
 export * from './components/Popover';
 export * from './components/Checkbox';
 export * from './components/Skeleton';
+export * from './components/Textarea';
 export * from './components/TextInput';
 export * from './components/ImageInput';
 export * from './components/NumberInput';
