@@ -5,7 +5,7 @@ import 'react-intl-tel-input/dist/main.css';
 import styled, { css } from 'styled-components';
 
 import arrow from '../../assets/arrow.svg';
-import { Label } from '../TextInput/TextInput';
+import Styled from '../TextInput/styles';
 
 type PhoneInputProps = {
     preferredCountries: string[];
@@ -95,7 +95,7 @@ const PhoneInput = ({
 
     return (
         <>
-            {label && <Label>{label}</Label>}
+            {label && <Styled.Label>{label}</Styled.Label>}
 
             <StyledPhoneInput
                 key={key}
