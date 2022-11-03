@@ -110,6 +110,9 @@ const PhoneInput = ({
                 <IntlTelInput
                     value={inputValue}
                     preferredCountries={preferredCountries}
+                    autoHideDialCode={false}
+                    separateDialCode={false}
+                    format
                     onPhoneNumberChange={(
                         isValid,
                         newValue,
