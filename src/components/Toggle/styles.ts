@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const SILDER_WIDTH = '2.5rem';
+const SILDER_HEIGHT = '1.25rem';
+
 export const Slider = styled.span<{ checked: boolean }>`
     position: absolute;
     cursor: pointer;
@@ -12,19 +15,19 @@ export const Slider = styled.span<{ checked: boolean }>`
     ::before {
         position: absolute;
         content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
+        height: calc(${SILDER_HEIGHT} - 4px);
+        width: calc(${SILDER_HEIGHT} - 4px);
+        left: 2px;
+        bottom: 2px;
         background-color: ${({ theme }) => theme.colors.white};
         -webkit-transition: .4s;
         transition: .4s;
         border-radius: 50%;
 
         ${({ checked }) => checked && `
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            -webkit-transform: translateX(calc(${SILDER_WIDTH} - ${SILDER_HEIGHT}));
+            -ms-transform: translateX(calc(${SILDER_WIDTH} - ${SILDER_HEIGHT}));
+            transform: translateX(calc(${SILDER_WIDTH} - ${SILDER_HEIGHT}));
         `}
     }
 
@@ -39,6 +42,6 @@ export const InvisibleInput = styled.input`
 export const Switch = styled.label`
     position: relative;;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: ${SILDER_WIDTH};
+    height: ${SILDER_HEIGHT};
 `;
