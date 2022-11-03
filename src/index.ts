@@ -13,3 +13,4 @@ export * from './components/Tabs';
 export * from './components/Table/Table';
 export * from './components/Alert';
 export * from './components/ImageInput';
+export * from './components/Toggle';
