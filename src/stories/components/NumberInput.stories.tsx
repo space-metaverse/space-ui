@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { NumberInput } from '../../components/NumberInput/NumberInput';
+import { NumberInput } from '../../components/NumberInput';
 import styled from 'styled-components';
 
 const CustomNumberInput = styled(NumberInput)`

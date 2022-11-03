@@ -13,4 +13,4 @@ export * from './components/Checkbox';
 export * from './components/Skeleton';
 export * from './components/TextInput';
 export * from './components/ImageInput';
-export * from './components/NumberInput/NumberInput';
+export * from './components/NumberInput';
