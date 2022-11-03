@@ -1,18 +1,20 @@
-import Styled from './styles';
-import { ButtonProps } from './types';
+import ButtonStyles from './styles';
+import type { ButtonProps } from './types';
 
 const Button = ({
     label = 'Button',
     ...props
 }: ButtonProps) => (
-    <Styled
+    <ButtonStyles
         type="button"
         {...props}
     >
         {label}
-    </Styled>
+    </ButtonStyles>
 );
 
 export {
     Button,
+    ButtonStyles,
+    type ButtonProps,
 };

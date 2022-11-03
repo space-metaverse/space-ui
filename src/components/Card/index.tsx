@@ -1,6 +1,6 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
-import Styled from './styles';
+import CardStyles from './styles';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     image: string;
@@ -11,12 +11,16 @@ const Card = ({
     children,
     ...props
 }: CardProps) => (
-    <Styled.Wrapper {...props}>
-        <Styled.Image src={image} />
-        <Styled.Content>
+    <CardStyles.Wrapper {...props}>
+        <CardStyles.Image src={image} />
+        <CardStyles.Content>
             {children}
-        </Styled.Content>
-    </Styled.Wrapper>
+        </CardStyles.Content>
+    </CardStyles.Wrapper>
 );
 
-export { Card };
+export {
+    Card,
+    CardStyles,
+    type CardProps,
+};

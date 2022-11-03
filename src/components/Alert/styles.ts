@@ -1,6 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, type DefaultTheme } from 'styled-components';
 
-import { AlertProps } from './types';
+import type { AlertProps } from './types';
 
 const types: Record<string, keyof DefaultTheme['colors']> = {
     info: 'blue',

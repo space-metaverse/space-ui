@@ -1,6 +1,6 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 
-import { ButtonProps } from '../Button/types';
+import type { ButtonProps } from '../Button';
 
 export interface ImageInputProps extends HTMLAttributes<HTMLDivElement> {
     file: File | null;

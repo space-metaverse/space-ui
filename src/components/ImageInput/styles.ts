@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Delete } from '../../icons';
 import { Button } from '../Button';
-import { ImageInputProps, StyledImageProps } from './types';
+import type { ImageInputProps, StyledImageProps } from './types';
 
 const Backdrop = styled.div<Pick<ImageInputProps, 'width'>>`
     width: 100%;

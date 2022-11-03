@@ -1,13 +1,17 @@
-import Styled from './styles';
-import { ChipProps } from './types';
+import ChipStyles from './styles';
+import type { ChipProps } from './types';
 
 const Chip = ({
     label = 'Chip',
     ...props
 }: ChipProps) => (
-    <Styled {...props}>
+    <ChipStyles {...props}>
         {label}
-    </Styled>
+    </ChipStyles>
 );
 
-export { Chip };
+export {
+    Chip,
+    ChipStyles,
+    type ChipProps,
+};

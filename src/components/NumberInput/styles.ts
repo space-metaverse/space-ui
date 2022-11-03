@@ -1,13 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import type { InputProps } from './types';
-
-const Label = styled.label`
-    ${({ theme }) => theme.fonts.size.sm};
-    color: ${({ theme }) => theme.colors.dark['600']};
-    font-weight: ${({ theme }) => theme.fonts.weight.semibold};
-    margin-bottom: 0.5rem;
-`;
+import type { NumberInputProps } from './types';
 
 const Input = styled.input`
     ${({ theme }) => theme.fonts.size.md};
@@ -16,11 +9,33 @@ const Input = styled.input`
     border: none;
     outline: none;
     padding: 0.75rem 1rem;
+    text-align: center;
     background-color: transparent;
 
     &::placeholder {
         color: ${({ theme }) => theme.colors.dark['500']};
     }
+`;
+
+const Icon = styled.span`
+    cursor: pointer;
+    padding: 0.75rem;
+    
+    path {
+        stroke: ${({ theme }) => theme.colors.dark['600']};
+        transition: ${({ theme }) => theme.transitions.ease};
+    }
+
+    &:hover path {
+        stroke: ${({ theme }) => theme.colors.dark['800']};
+    }
+`;
+
+const Label = styled.label`
+    ${({ theme }) => theme.fonts.size.sm};
+    color: ${({ theme }) => theme.colors.dark['600']};
+    font-weight: ${({ theme }) => theme.fonts.weight.semibold};
+    margin-bottom: 0.5rem;
 `;
 
 const InputGrid = styled.div`
@@ -31,32 +46,22 @@ const InputGrid = styled.div`
     border-radius: ${({ theme }) => theme.radius.xl};
 `;
 
-const PasswordToggleWrapper = styled.div`
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    transition: ${({ theme }) => theme.transitions.ease};
-`;
-
-const focused = css`
-    ${InputGrid} {
-        border-color: ${({ theme }) => theme.colors.purple['400']};
-    }
-`;
-
-const Wrapper = styled.div<InputProps>`
+const Wrapper = styled.div<NumberInputProps>`
     display: flex;
     font-family: ${({ theme }) => theme.fonts.family.body};
     flex-direction: column;
 
     &:hover {
-        ${focused}
+        ${InputGrid} {
+            border-color: ${({ theme }) => theme.colors.purple['400']};
+        }
     }
 
-    ${({ isFocused, disabled }) => !disabled && isFocused && css`
-        ${focused}
-    `}
-
     ${({ theme, disabled, isError }) => !isError && disabled && css`
+        ${Icon} path {
+            stroke: ${theme.colors.dark['200']};
+        }
+
         ${Label} {
             color: ${theme.colors.dark['500']};
         }
@@ -67,6 +72,7 @@ const Wrapper = styled.div<InputProps>`
             }
         }
 
+        ${Icon},
         ${Input} {
             cursor: not-allowed;
         }
@@ -91,9 +97,9 @@ const Wrapper = styled.div<InputProps>`
 `;
 
 export default {
+    Icon,
     Label,
     Input,
     Wrapper,
     InputGrid,
-    PasswordToggleWrapper,
 };
