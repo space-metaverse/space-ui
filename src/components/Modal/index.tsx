@@ -8,7 +8,7 @@ import {
 
 import { useOutsideClick } from '../../hooks';
 import { Close as CloseIcon } from '../../icons';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import Styled from './styles';
 import type { ModalProps, ModalBaseProps } from './types';
 
@@ -50,7 +50,7 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
             show={show}
             role="dialog"
             aria-modal={show}
-            aria-hidden={! show}
+            aria-hidden={!show}
             aria-labelledby="dialog"
         >
             <Styled.Wrapper ref={wrapper}>
@@ -72,7 +72,7 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
 
                 {actions && (
                     <Styled.Footer>
-                        {!! actions.secondary && (
+                        {!!actions.secondary && (
                             <Button
                                 {...actions.secondary}
                                 size={actions.secondary.size || 'medium'}
@@ -80,7 +80,7 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
                             />
                         )}
 
-                        {!! actions.primary && (
+                        {!!actions.primary && (
                             <Button
                                 {...actions.primary}
                                 size={actions.primary.size || 'medium'}

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { Skeleton } from "../../components/Skeleton/Skeleton";
+import { Skeleton } from "../../components/Skeleton";
 
 export default {
     title: "Example/Skeleton",
@@ -15,9 +15,9 @@ const Template: ComponentStory<typeof Skeleton> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     run: true,
-    rounded: true,
     width: "100%",
     height: "4rem",
+    rounded: true,
 };
 Default.parameters = {
     controls: {

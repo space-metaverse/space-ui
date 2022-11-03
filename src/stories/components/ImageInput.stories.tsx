@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ImageInput } from "../../components/ImageInput/ImageInput";
+import { ImageInput } from "../../components/ImageInput";
 
 export default {
     title: "Example/ImageInput",
@@ -8,12 +8,17 @@ export default {
     argTypes: {},
 } as ComponentMeta<typeof ImageInput>;
 
-const Template: ComponentStory<typeof ImageInput> = (args) => (
-    <ImageInput {...args} />
-);
+const Template: ComponentStory<typeof ImageInput> = (args) => {
+    const [file, setFile] = useState<File | null>(null)
+
+    return (
+        <ImageInput {...args} file={file} onFile={setFile} />
+    )
+};
 
 export const Default = Template.bind({});
 Default.args = {
+    file: null,
     header: "Upload your Avatar",
     button: {
         label: "Upload",
@@ -21,10 +26,9 @@ Default.args = {
         color: "blue",
     },
     width: 600,
-    height: 144,
     onFile: console.log,
-    changeLabelWhenFileSelected: false,
     showDummyAvatar: true,
+    changeLabelWhenFileSelected: false,
 };
 Default.parameters = {
     controls: {
