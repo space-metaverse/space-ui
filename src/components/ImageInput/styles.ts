@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Delete } from '../../icons';
 import { Button } from '../Button';
-import type { ImageInputProps, StyledImageProps } from './types';
+import type { ImageInputProps } from './types';
 
 const Backdrop = styled.div<Pick<ImageInputProps, 'width'>>`
     width: 100%;
@@ -14,15 +14,22 @@ const Backdrop = styled.div<Pick<ImageInputProps, 'width'>>`
     background-color: ${({ theme }) => theme.colors.dark['100']};
 `;
 
-const Avatar = styled.div<StyledImageProps>`
+const Avatar = styled.div`
     width: 6rem;
     height: 6rem;
     min-width: 6rem;
-    border-radius: ${({ theme }) => theme.radius.full};
-    background-size: cover;
     background-color: ${({ theme }) => theme.colors.dark['200']};
-    background-image: url(${props => props.avatar || ''});
-    background-position: center;
+
+    &,
+    img {
+        border-radius: ${({ theme }) => theme.radius.full};
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 `;
 
 const Text = styled.p`
