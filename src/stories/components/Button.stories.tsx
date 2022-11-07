@@ -11,8 +11,11 @@ export default {
             control: { type: 'inline-radio' },
         },
         color: {
-            options: ['green', 'blue', 'red', 'orange', 'purple', 'grey', 'white'],
+            options: ['green', 'blue', 'red', 'orange', 'purple', 'grey', 'white', 'white-red'],
             control: { type: 'inline-radio' },
+        },
+        outline: {
+            control: { type: 'boolean' },
         },
         disabled: {
             control: { type: 'boolean' },
@@ -27,6 +30,7 @@ Default.args = {
     size: 'medium',
     color: 'blue',
     label: 'Button',
+    outline: false,
     disabled: false,
 };
 Default.parameters = {

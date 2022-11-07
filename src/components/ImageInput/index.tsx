@@ -31,7 +31,14 @@ const ImageInput = ({
 
     return (
         <ImageInputStyles.Backdrop width={width}>
-            <ImageInputStyles.Avatar avatar={avatar} />
+            <ImageInputStyles.Avatar>
+                {avatar && (
+                    <img
+                        alt=""
+                        src={avatar}
+                    />
+                )}
+            </ImageInputStyles.Avatar>
 
             <ImageInputStyles.Text>
                 {changeLabelWhenFileSelected && file?.name

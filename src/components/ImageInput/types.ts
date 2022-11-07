@@ -11,7 +11,3 @@ export interface ImageInputProps extends HTMLAttributes<HTMLDivElement> {
     showDummyAvatar?: boolean;
     changeLabelWhenFileSelected?: boolean;
 }
-
-export interface StyledImageProps {
-    avatar: string | null;
-}
