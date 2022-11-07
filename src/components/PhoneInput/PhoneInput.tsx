@@ -50,7 +50,13 @@ const StyledPhoneInput = styled.div<{
 
         &::placeholder {
             color: #b0b0b8;
-        }
+        }        
+        
+        width: 100%;
+    }
+
+    .intl-tel-input {
+        display: flex;
     }
 
     .intl-tel-input .flag-container .arrow.up:after {
@@ -85,8 +91,10 @@ const PhoneInput = ({
     const [inputValue, setInputValue] = useState<string>(value);
     const [key, setKey] = useState<number>(0);
 
+    const regexInput = /[^0-9+()-]/gi;
+
     useEffect(() => {
-        setInputValue(value);
+        setInputValue(value.replace(regexInput, ''));
     }, [value]);
 
     useEffect(() => {
@@ -112,7 +120,6 @@ const PhoneInput = ({
                     preferredCountries={preferredCountries}
                     autoHideDialCode={false}
                     separateDialCode={false}
-                    format
                     onPhoneNumberChange={(
                         isValid,
                         newValue,
@@ -120,8 +127,8 @@ const PhoneInput = ({
                         fullNumber,
                         extension,
                     ) => {
-                        setInputValue(newValue);
-                        onChange(fullNumber);
+                        setInputValue(newValue.replace(regexInput, ''));
+                        onChange(fullNumber.replace(regexInput, ''));
                     }}
                     onPhoneNumberFocus={useCallback(() => setIsFocused(true), [])}
                     onPhoneNumberBlur={useCallback(() => setIsFocused(false), [])}
