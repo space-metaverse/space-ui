@@ -97,6 +97,7 @@ export default styled.button.attrs<StyledButtonProps>(({ size, color }) => ({
                     ${appearance(theme.colors.blue['400'], theme.colors.blue['500'], outline)}
 
                     &:focus {
+                        color: ${theme.colors.white};
                         background-color: ${theme.colors.blue['600']};
                     }
                 `;
