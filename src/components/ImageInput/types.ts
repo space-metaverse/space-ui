@@ -1,6 +1,6 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 
-import { ButtonProps } from '../Button/types';
+import type { ButtonProps } from '../Button';
 
 export interface ImageInputProps extends HTMLAttributes<HTMLDivElement> {
     file: File | null;
@@ -10,8 +10,4 @@ export interface ImageInputProps extends HTMLAttributes<HTMLDivElement> {
     onFile: Dispatch<SetStateAction<File | null>>;
     showDummyAvatar?: boolean;
     changeLabelWhenFileSelected?: boolean;
-}
-
-export interface StyledImageProps {
-    avatar: string | null;
 }

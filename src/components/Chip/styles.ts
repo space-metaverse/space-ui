@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { rgba } from '../../helpers';
-import { ChipProps } from './types';
+import type { ChipProps } from './types';
 
 const appearance = (color: string) => css`
     color: ${color};

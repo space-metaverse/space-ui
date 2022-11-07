@@ -1,4 +1,4 @@
-import { ChangeEvent, LabelHTMLAttributes } from 'react';
+import type { ChangeEvent, LabelHTMLAttributes } from 'react';
 
 export interface CheckboxProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
     label?: string;

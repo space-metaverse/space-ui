@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { CheckboxProps } from './types';
+import type { CheckboxProps } from './types';
 
 const checked = css`
     border-color: ${({ theme }) => theme.colors.dark['700']};

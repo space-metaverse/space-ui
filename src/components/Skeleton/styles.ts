@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { SkeletonProps } from './types';
+import type { SkeletonProps } from './types';
 
 export default styled.div<SkeletonProps>`
     width: ${({ width }) => width};

@@ -1,14 +1,14 @@
 import {
     useMemo,
     useState,
-    FocusEvent,
-    ChangeEvent,
     useCallback,
+    type FocusEvent,
+    type ChangeEvent,
 } from 'react';
 
 import { EyeClose, EyeOpen } from '../../icons';
-import Styled from './styles';
-import { TextInputProps } from './types';
+import TextInputStyles from './styles';
+import type { TextInputProps } from './types';
 
 const TextInput = ({
     type,
@@ -54,15 +54,15 @@ const TextInput = ({
     }, []);
 
     return (
-        <Styled.Wrapper
+        <TextInputStyles.Wrapper
             isError={isError}
             disabled={disabled}
             isFocused={isFocused}
             className={className}
         >
-            <Styled.Label>{label}</Styled.Label>
-            <Styled.InputGrid>
-                <Styled.Input
+            <TextInputStyles.Label>{label}</TextInputStyles.Label>
+            <TextInputStyles.InputGrid>
+                <TextInputStyles.Input
                     type={showPasswordToUse ? 'text' : type}
                     value={valueToUse}
                     onBlur={handleBlur}
@@ -73,16 +73,20 @@ const TextInput = ({
                 />
                 {
                     (type === 'password' || showPasswordToUse) && (
-                        <Styled.PasswordToggleWrapper
+                        <TextInputStyles.PasswordToggleWrapper
                             as={showPasswordToUse ? EyeOpen : EyeClose}
                             onClick={handlePasswordToggle}
                             disabled={disabled}
                         />
                     )
                 }
-            </Styled.InputGrid>
-        </Styled.Wrapper>
+            </TextInputStyles.InputGrid>
+        </TextInputStyles.Wrapper>
     );
 };
 
-export { TextInput };
+export {
+    TextInput,
+    TextInputStyles,
+    type TextInputProps,
+};

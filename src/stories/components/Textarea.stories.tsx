@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { NumberInput } from '../../components/NumberInput';
+import { Textarea } from '../../components/Textarea';
 import styled from 'styled-components';
 
-const CustomNumberInput = styled(NumberInput)`
+const CustomTextarea = styled(Textarea)`
     max-width: 25rem;
 `
 
 export default {
-    title: 'Example/NumberInput',
-    component: NumberInput,
+    title: 'Example/Textarea',
+    component: Textarea,
     argTypes: {
         disabled: {
             control: { type: 'boolean' },
@@ -18,16 +18,18 @@ export default {
             control: { type: 'boolean' },
         },
     },
-} as ComponentMeta<typeof NumberInput>;
+} as ComponentMeta<typeof Textarea>;
 
-const Template: ComponentStory<typeof NumberInput> = (args) => <CustomNumberInput {...args} />;
+const Template: ComponentStory<typeof Textarea> = (args) => <CustomTextarea {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+    rows: 5,
     label: 'Label',
-    disabled: false,
+    value: '',
     isError: false,
-    value: 0,
+    disabled: false,
+    placeholder: 'Hello space',
 };
 Default.parameters = {
     controls: {

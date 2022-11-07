@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import Styled from '../Checkbox/styles';
-import { RadioProps } from './types';
+import { CheckboxStyles } from '../Checkbox';
+import type { RadioProps } from './types';
 
-const CustomDot = styled(Styled.BaseCheck)`
+const CustomDot = styled(CheckboxStyles.BaseCheck)`
     border-radius: ${({ theme }) => theme.radius.full};
 
     &::after {
@@ -19,7 +19,7 @@ const CustomDot = styled(Styled.BaseCheck)`
     }
 `;
 
-const Label = styled(Styled.BaseLabel)`
+const Label = styled(CheckboxStyles.BaseLabel)`
     &:hover {
         ${CustomDot} {
             border-color: ${({ theme }) => theme.colors.dark['600']};
@@ -27,7 +27,7 @@ const Label = styled(Styled.BaseLabel)`
     }
 `;
 
-const Input = styled(Styled.BaseInput)`
+const Input = styled(CheckboxStyles.BaseInput)`
     &:checked ~ span {
         border-color: ${({ theme }) => theme.colors.blue['400']};
         background-color: ${({ theme }) => theme.colors.blue['400']};

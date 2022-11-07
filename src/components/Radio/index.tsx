@@ -1,7 +1,7 @@
-import { useState, ChangeEvent, useCallback } from 'react';
+import { useState, useCallback, type ChangeEvent } from 'react';
 
-import Styled from './styles';
-import { RadioProps } from './types';
+import RadioStyles from './styles';
+import type { RadioProps } from './types';
 
 const Radio = ({
     options = ['Option 1', 'Option 2', 'Option 3'],
@@ -22,30 +22,34 @@ const Radio = ({
     }, [onChange]);
 
     return (
-        <Styled.Group
+        <RadioStyles.Group
             direction={direction}
             className={className}
         >
             {options.map((option, index) => {
                 const key = `${option}-${index}`;
                 return (
-                    <Styled.Label
+                    <RadioStyles.Label
                         key={key}
                         disabled={disabled}
                     >
-                        <Styled.Input
+                        <RadioStyles.Input
                             type="radio"
                             checked={checkedKey === key}
                             onChange={e => handleChange(e, key, option)}
                             disabled={disabled}
                         />
-                        <Styled.CustomDot />
+                        <RadioStyles.CustomDot />
                         {option}
-                    </Styled.Label>
+                    </RadioStyles.Label>
                 );
             })}
-        </Styled.Group>
+        </RadioStyles.Group>
     );
 };
 
-export { Radio };
+export {
+    Radio,
+    RadioStyles,
+    type RadioProps,
+};

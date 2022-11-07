@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledTabProps } from './types';
+import type { StyledTabProps } from './types';
 
 const Wrapper = styled.div`
     width: 100%;

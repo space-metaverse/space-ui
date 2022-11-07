@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, HTMLAttributes } from 'react';
+import type { Dispatch, SetStateAction, HTMLAttributes } from 'react';
 
 export interface StyledTabProps {
     activeTab: boolean;
