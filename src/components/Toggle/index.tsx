@@ -9,6 +9,7 @@ const Toggle = ({
     isChecked = false,
     onChange,
     onChecked,
+    className,
     ...props
 }: ToggleProps) => {
     const onToggle = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +22,7 @@ const Toggle = ({
         <ToggleStyles.Label
             label={label}
             disabled={disabled}
+            className={className}
         >
             {label}
 
