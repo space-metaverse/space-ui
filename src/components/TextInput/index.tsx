@@ -15,7 +15,7 @@ const TextInput = ({
     label = 'Label',
     value = '',
     onBlur,
-    isError = false,
+    isError,
     disabled = false,
     onFocus,
     onChange,
@@ -55,12 +55,16 @@ const TextInput = ({
 
     return (
         <TextInputStyles.Wrapper
-            isError={isError}
+            isError={!!isError}
             disabled={disabled}
             isFocused={isFocused}
             className={className}
         >
-            <TextInputStyles.Label>{label}</TextInputStyles.Label>
+            <TextInputStyles.Label>
+                {label}
+
+                {isError && <TextInputStyles.Error>{isError}</TextInputStyles.Error>}
+            </TextInputStyles.Label>
             <TextInputStyles.InputGrid>
                 <TextInputStyles.Input
                     type={showPasswordToUse ? 'text' : type}

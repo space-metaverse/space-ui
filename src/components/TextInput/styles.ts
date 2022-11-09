@@ -1,12 +1,18 @@
 import styled, { css } from 'styled-components';
 
-import type { InputProps } from './types';
+import type { InputStylesProps } from './types';
 
 const Label = styled.label`
     ${({ theme }) => theme.fonts.size.sm};
     color: ${({ theme }) => theme.colors.dark['600']};
     font-weight: ${({ theme }) => theme.fonts.weight.semibold};
     margin-bottom: 0.5rem;
+`;
+
+const Error = styled.span`
+    ${({ theme }) => theme.fonts.size.sm};
+    color: ${({ theme }) => theme.colors.red['400']};
+    float: right;
 `;
 
 const Input = styled.input`
@@ -43,7 +49,7 @@ const focused = css`
     }
 `;
 
-const Wrapper = styled.div<InputProps>`
+const Wrapper = styled.div<InputStylesProps>`
     display: flex;
     font-family: ${({ theme }) => theme.fonts.family.body};
     flex-direction: column;
@@ -93,6 +99,7 @@ const Wrapper = styled.div<InputProps>`
 export default {
     Label,
     Input,
+    Error,
     Wrapper,
     InputGrid,
     PasswordToggleWrapper,
