@@ -71,7 +71,7 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
                 </ModalStyles.Body>
 
                 {actions && (
-                    <ModalStyles.Footer>
+                    <ModalStyles.Footer twoActions={!!actions.secondary && !!actions.primary ? true : false}>
                         {!!actions.secondary && (
                             <Button
                                 {...actions.secondary}
