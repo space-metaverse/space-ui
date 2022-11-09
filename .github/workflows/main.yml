@@ -22,7 +22,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Node Modules
-        run: npm ci
+        run: npm i --force
 
       - name: Build Storybook
         run: npm run build-storybook
