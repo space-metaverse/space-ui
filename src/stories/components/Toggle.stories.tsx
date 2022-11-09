@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Toggle } from '../../components/Toggle';
 
@@ -12,7 +12,11 @@ export default {
     },
 } as ComponentMeta<typeof Toggle>;
 
-const Template: ComponentStory<typeof Toggle> = (args) => <Toggle {...args} />;
+const Template: ComponentStory<typeof Toggle> = (args) => {
+    const [checked, setChecked] = useState(false)
+
+    return <Toggle {...args} isChecked={checked || args.isChecked} onChecked={setChecked} />
+};
 
 export const Default = Template.bind({});
 Default.args = {
