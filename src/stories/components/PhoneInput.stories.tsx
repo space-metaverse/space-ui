@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { PhoneInput } from "../../components/PhoneInput/PhoneInput";
+import { PhoneInput } from "../../components/PhoneInput";
 
 export default {
     title: "Example/PhoneInput",
