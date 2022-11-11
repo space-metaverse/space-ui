@@ -14,5 +14,7 @@ export * from './components/Checkbox';
 export * from './components/Skeleton';
 export * from './components/Textarea';
 export * from './components/TextInput';
+export * from './components/PhoneInput';
 export * from './components/ImageInput';
 export * from './components/NumberInput';
+export * from './components/DragAndDrop';

@@ -84,13 +84,13 @@ const Wrapper = styled.div<NumberInputProps>`
 
     ${({ theme, isError }) => isError && css`
         ${InputGrid} {
-            border: 1px solid ${theme.colors.red['500']};
+            border-color: ${theme.colors.red['500']};
             background-color: ${theme.colors.red['100']};
         }
 
         &:hover {
             ${InputGrid} {
-                border: 1px solid ${theme.colors.red['500']};
+                border-color: ${theme.colors.red['500']};
             }
         }
     `}
