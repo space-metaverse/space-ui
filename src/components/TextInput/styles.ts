@@ -84,7 +84,7 @@ const Wrapper = styled.div<InputProps>`
 
         &:hover {
             ${InputGrid} {
-                border: 1px solid ${theme.colors.red['500']};
+                border-color: ${theme.colors.red['500']};
             }
         }
     `}

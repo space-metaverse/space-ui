@@ -60,13 +60,13 @@ const Wrapper = styled.div<TextareaProps>`
 
     ${({ theme, isError }) => isError && css`
         ${Input} {
-            border: 1px solid ${theme.colors.red['500']};
+            border-color: ${theme.colors.red['500']};
             background-color: ${theme.colors.red['100']};
         }
 
         &:hover {
             ${Input} {
-                border: 1px solid ${theme.colors.red['500']};
+                border-color: ${theme.colors.red['500']};
             }
         }
     `}
