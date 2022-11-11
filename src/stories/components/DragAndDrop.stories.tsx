@@ -19,6 +19,7 @@ export const Default = Template.bind({});
 Default.args = {
     files: [],
     label: 'Thumbnail',
+    isError: false,
     onFiles: () => {},
     disabled: false
 };

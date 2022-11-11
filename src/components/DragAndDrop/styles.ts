@@ -99,7 +99,18 @@ const Wrapper = styled.div<DragAndDropStylesProps>`
     display: flex;
     flex-direction: column;
 
-    ${({ theme, disabled }) => disabled && css`
+    ${({ theme, isError }) => isError && css`
+        ${Box} {
+            border-color: ${theme.colors.red['500']};
+            background-color: ${theme.colors.red['100']};
+        }
+
+        ${Icon} path {
+            stroke: ${theme.colors.red['500']};
+        }
+    `}
+
+    ${({ theme, isError, disabled }) => !isError && disabled && css`
         ${Box} {
             border-color: ${theme.colors.dark['200']};
         }
@@ -118,6 +129,10 @@ const Wrapper = styled.div<DragAndDropStylesProps>`
 
         ${Description} {
             color: ${theme.colors.dark['500']};
+
+            b {
+                color: ${theme.colors.dark['600']};
+            }
         }
     `}
 `;

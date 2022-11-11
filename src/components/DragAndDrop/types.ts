@@ -8,9 +8,11 @@ export interface DragAndDropProps extends InputHTMLAttributes<HTMLInputElement> 
     files?: File[];
     title?: string;
     onFiles: Dispatch<SetStateAction<File[]>>;
+    isError?: boolean;
 }
 
 export interface DragAndDropStylesProps {
+    isError?: boolean;
     disabled?: boolean;
 }
 

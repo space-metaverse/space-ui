@@ -9,6 +9,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
     files,
     label,
     title = 'Drag and drop image here',
+    isError,
     onFiles,
     disabled,
     className,
@@ -35,6 +36,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
+
         if (e.target.files && e.target.files[0]) {
             onFiles(Array.from(e.target.files));
         }
@@ -46,6 +48,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
 
     return (
         <DragAndDropStyles.Wrapper
+            isError={isError}
             disabled={disabled}
             className={className}
         >
