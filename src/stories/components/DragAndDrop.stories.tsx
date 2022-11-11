@@ -18,6 +18,7 @@ const Template: ComponentStory<typeof DragAndDrop> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     files: [],
+    label: 'Thumbnail',
     onFiles: () => {},
     disabled: false
 };

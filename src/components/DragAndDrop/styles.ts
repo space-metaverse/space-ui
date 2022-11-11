@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Image as IconImage } from '../../icons';
-import type { DragAndDropStylesProps } from './types';
+import type { DragAndDropStylesProps, DragAndDropStylesBoxProps } from './types';
 
 const File = styled.li`
     ${({ theme }) => theme.fonts.size.sm};
@@ -28,6 +28,7 @@ const ListFiles = styled.ul`
     margin: 0;
     display: flex;
     padding: 0;
+    margin-top: 1rem;
     flex-direction: column;
 `;
 
@@ -55,10 +56,12 @@ const Title = styled.p`
     font-family: ${({ theme }) => theme.fonts.family.body};
 `;
 
-const Wrapper = styled.div`
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
+const Label = styled.label`
+    ${({ theme }) => theme.fonts.size.sm};
+    color: ${({ theme }) => theme.colors.dark['600']};
+    font-weight: ${({ theme }) => theme.fonts.weight.semibold};
+    font-family: ${({ theme }) => theme.fonts.family.body};
+    margin-bottom: 0.5rem;
 `;
 
 const Content = styled.div`
@@ -78,7 +81,7 @@ const Description = styled.span`
     }
 `;
 
-const Box = styled.div<DragAndDropStylesProps>`
+const Box = styled.div<DragAndDropStylesBoxProps>`
     width: 100%;
     border: ${({ theme, dragging }) => `1px dashed ${dragging ? theme.colors.purple['400'] : theme.colors.dark['300']}`};
     padding: 1.25rem 1.5rem;
@@ -92,10 +95,38 @@ const Box = styled.div<DragAndDropStylesProps>`
     }
 `;
 
+const Wrapper = styled.div<DragAndDropStylesProps>`
+    display: flex;
+    flex-direction: column;
+
+    ${({ theme, disabled }) => disabled && css`
+        ${Box} {
+            border-color: ${theme.colors.dark['200']};
+        }
+
+        ${Label} {
+            color: ${theme.colors.dark['500']};
+        }
+
+        ${Input} {
+            cursor: not-allowed;
+        }
+
+        ${Title} {
+            color: ${theme.colors.dark['600']};
+        }
+
+        ${Description} {
+            color: ${theme.colors.dark['500']};
+        }
+    `}
+`;
+
 export default {
     Box,
     File,
     Icon,
+    Label,
     Input,
     Title,
     Wrapper,

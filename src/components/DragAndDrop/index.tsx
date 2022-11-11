@@ -7,6 +7,7 @@ import type { DragAndDropProps } from './types';
 const DragAndDrop: React.FC<DragAndDropProps> = ({
     icon: Icon,
     files,
+    label,
     title = 'Drag and drop image here',
     onFiles,
     disabled,
@@ -44,10 +45,14 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
     };
 
     return (
-        <DragAndDropStyles.Wrapper className={className}>
+        <DragAndDropStyles.Wrapper
+            disabled={disabled}
+            className={className}
+        >
+            {label && <DragAndDropStyles.Label>{label}</DragAndDropStyles.Label>}
+
             <DragAndDropStyles.Box
                 onDrop={handleDrop}
-                disabled={disabled}
                 dragging={drag}
                 onDragOver={handleDrag}
                 onDragEnter={handleDrag}
