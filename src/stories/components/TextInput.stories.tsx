@@ -21,12 +21,12 @@ export const Text = Template.bind({});
 export const Password = Template.bind({});
 
 Text.args = {
-    label: 'Label',
-    disabled: false,
-    isError: false,
-    value: '',
-    placeholder: '',
     type: 'text',
+    label: 'Label',
+    value: '',
+    isError: '',
+    disabled: false,
+    placeholder: '',
     showPassword: false,
     onChange: (e: ChangeEvent<HTMLInputElement>) => console.log(e.target.value)
 };
@@ -38,12 +38,12 @@ Text.parameters = {
 };
 
 Password.args = {
-    label: 'Label',
-    disabled: false,
-    isError: false,
-    value: '',
-    placeholder: '',
     type: 'password',
+    label: 'Label',
+    value: '',
+    isError: '',
+    disabled: false,
+    placeholder: '',
     showPassword: false,
     onChange: (e: ChangeEvent<HTMLInputElement>) => console.log(e.target.value)
 };
