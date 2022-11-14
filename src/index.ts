@@ -9,6 +9,7 @@ export * from './components/Alert';
 export * from './components/Button';
 export * from './components/Select';
 export * from './components/Toggle';
+export * from './components/TopNav';
 export * from './components/Popover';
 export * from './components/Checkbox';
 export * from './components/Skeleton';
