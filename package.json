@@ -12,7 +12,7 @@
     "scripts": {
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "build-lib": "tsc --outDir lib && copyfiles package.json README.md lib/ && cd src && copyfiles fonts/* assets/* icons/*.svg styled.d.ts ../lib/",
+        "build-lib": "tsc --outDir lib && copyfiles package.json README.md lib/ && cd src && copyfiles fonts/* assets/* icons/*.svg index.css styled.d.ts ../lib/",
         "lint": "eslint --fix ."
     },
     "peerDependencies": {
