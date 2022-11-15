@@ -132,6 +132,7 @@ const IconAction = styled(Dots)`
 
 const Wrapper = styled.nav<ResponsiveProps>`
   top: 0;
+  left: 0;
   width: 100%;
   height: 4rem;
   display: flex;
