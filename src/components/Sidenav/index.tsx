@@ -130,14 +130,16 @@ const SideNav: React.FC<SideNavProps> = ({
                 <SideNavStyles.IconDropDown />
             </SideNavStyles.Preview>
 
-            <SideNavStyles.Content>
-                {goBack && (
-                    <SideNavStyles.BackIconButton onClick={goBack}>
-                        <ArrowLeft />
-                    </SideNavStyles.BackIconButton>
-                )}
-                <SideNavStyles.Title>{title}</SideNavStyles.Title>
-            </SideNavStyles.Content>
+            {title && (
+                <SideNavStyles.Content>
+                    {goBack && (
+                        <SideNavStyles.BackIconButton onClick={goBack}>
+                            <ArrowLeft />
+                        </SideNavStyles.BackIconButton>
+                    )}
+                    <SideNavStyles.Title>{title}</SideNavStyles.Title>
+                </SideNavStyles.Content>
+            )}
 
             <SideNavStyles.Options animate={false}>
                 {routes.map((props, index) => (

@@ -23,7 +23,7 @@ export type OptionComponentProps = OptionProps & {
 };
 
 export type SideNavProps = {
-    title: string
+    title?: string
     routes: OptionProps[]
     goBack?: VoidFunction
 };
