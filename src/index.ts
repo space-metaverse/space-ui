@@ -11,6 +11,7 @@ export * from './components/Select';
 export * from './components/Toggle';
 export * from './components/TopNav';
 export * from './components/Popover';
+export * from './components/SideNav';
 export * from './components/Checkbox';
 export * from './components/Skeleton';
 export * from './components/Textarea';

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 
 import { useOutsideClick } from '../../hooks';
 import { ArrowLeft } from '../../icons';
-import * as Styled from './styles';
+import * as SideNavStyles from './styles';
 import type { SideNavProps, SimpleOptionProps, OptionComponentProps } from './types';
 
 const Option: React.FC<OptionComponentProps> = ({
@@ -16,8 +16,8 @@ const Option: React.FC<OptionComponentProps> = ({
     children,
     toggleState,
 }) => (
-    <Styled.OptionWrapper>
-        <Styled.Option
+    <SideNavStyles.OptionWrapper>
+        <SideNavStyles.Option
             onClick={() => {
                 if (!disabled) {
                     if (!children) select({ label, Icon }, route);
@@ -30,13 +30,13 @@ const Option: React.FC<OptionComponentProps> = ({
         >
             <Icon width={24} height={24} />
             <p>{label}</p>
-            {children && <Styled.IconDropDown />}
-        </Styled.Option>
+            {children && <SideNavStyles.IconDropDown />}
+        </SideNavStyles.Option>
 
         {children && (
-            <Styled.Options show={show} animate>
+            <SideNavStyles.Options show={show} animate>
                 {children.map(item => (
-                    <Styled.Option
+                    <SideNavStyles.Option
                         key={item.label}
                         child
                         onClick={() => {
@@ -52,14 +52,14 @@ const Option: React.FC<OptionComponentProps> = ({
                     >
                         <item.Icon width={24} height={24} />
                         <p>{item.label}</p>
-                    </Styled.Option>
+                    </SideNavStyles.Option>
                 ))}
-            </Styled.Options>
+            </SideNavStyles.Options>
         )}
-    </Styled.OptionWrapper>
+    </SideNavStyles.OptionWrapper>
 );
 
-const Sidenav: React.FC<SideNavProps> = ({
+const SideNav: React.FC<SideNavProps> = ({
     title,
     routes,
     goBack,
@@ -114,32 +114,32 @@ const Sidenav: React.FC<SideNavProps> = ({
     useOutsideClick(dropdownRef, () => setDropdown(false));
 
     return (
-        <Styled.Wrapper
+        <SideNavStyles.Wrapper
             ref={dropdownRef}
             dropdown={dropdown}
         >
-            <Styled.Preview
-                as={Styled.Option}
+            <SideNavStyles.Preview
+                as={SideNavStyles.Option}
                 animate={dropdown}
                 onClick={() => setDropdown(prev => !prev)}
             >
-                {optionSelected?.Icon && <Styled.Title as={optionSelected?.Icon} />}
+                {optionSelected?.Icon && <SideNavStyles.Title as={optionSelected?.Icon} />}
 
                 <p>{optionSelected?.label}</p>
 
-                <Styled.IconDropDown />
-            </Styled.Preview>
+                <SideNavStyles.IconDropDown />
+            </SideNavStyles.Preview>
 
-            <Styled.Content>
+            <SideNavStyles.Content>
                 {goBack && (
-                    <Styled.BackIconButton onClick={goBack}>
+                    <SideNavStyles.BackIconButton onClick={goBack}>
                         <ArrowLeft />
-                    </Styled.BackIconButton>
+                    </SideNavStyles.BackIconButton>
                 )}
-                <Styled.Title>{title}</Styled.Title>
-            </Styled.Content>
+                <SideNavStyles.Title>{title}</SideNavStyles.Title>
+            </SideNavStyles.Content>
 
-            <Styled.Options animate={false}>
+            <SideNavStyles.Options animate={false}>
                 {routes.map((props, index) => (
                     <Option
                         {...props}
@@ -152,9 +152,13 @@ const Sidenav: React.FC<SideNavProps> = ({
                         {props.children}
                     </Option>
                 ))}
-            </Styled.Options>
-        </Styled.Wrapper>
+            </SideNavStyles.Options>
+        </SideNavStyles.Wrapper>
     );
 };
 
-export default Sidenav;
+export {
+    SideNav,
+    SideNavStyles,
+    type SideNavProps,
+};
