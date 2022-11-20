@@ -14,10 +14,12 @@ const Template: ComponentStory<typeof PhoneInput> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    preferredCountries: ["us", "ca", "br"],
+    mainCountry: "ca",
     isError: false,
     value: "",
     label: "Phone",
+    enableSearch: true,
+    disableSearchIcon: false,
     onChange: (value: string) => console.info(value),
 };
 Default.parameters = {
