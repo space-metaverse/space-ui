@@ -3,6 +3,16 @@ import styled, { css } from 'styled-components';
 import { DropDown } from '../../icons';
 import type { OptionStylesProps, OptionsStylesProps, WrapperStylesProps } from './types';
 
+const activeOption = css`
+    p {
+      color: ${({ theme }) => theme.colors.blue['400']};
+    }
+
+    svg path {
+      stroke: ${({ theme }) => theme.colors.blue['400']};
+    }
+`;
+
 export const Content = styled.div`
   gap: .75rem;
   padding: 1.25rem;
@@ -84,20 +94,23 @@ export const Option = styled.div<OptionStylesProps>`
     letter-spacing: 1px;
   }
 
+  p,
+  path {
+    transition: ${({ theme }) => theme.transitions.ease};
+  }
+
+  ${({ disabled }) => !disabled && css`
+    &:hover {
+        ${activeOption}
+    }
+  `}
+
   ${({ child = false }) => child && css`
     padding: .625rem 0;
     margin-left: .5rem;
   `};
 
-  ${({ selected = false }) => selected && css`
-    p {
-      color: ${({ theme }) => theme.colors.blue['400']};
-    }
-
-    svg path {
-      stroke: ${({ theme }) => theme.colors.blue['400']};
-    }
-  `}
+  ${({ selected = false }) => selected && activeOption}
 
   ${({ animate = false }) => css`
     ${IconDropDown} {
