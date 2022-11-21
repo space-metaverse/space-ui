@@ -1,10 +1,8 @@
-import 'react-intl-tel-input/dist/main.css';
-
 import { useEffect, useState } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 
-import Styled from '../TextInput/styles';
-import PhoneInputStyles from './styles';
+import { TextInputStyles } from '../TextInput';
+import PhoneInputStyles, { Wrapper } from './styles';
 
 type PhoneInputProps = {
     preferredCountries: string[];
@@ -38,8 +36,8 @@ const PhoneInput = ({
     }, [preferredCountries]);
 
     return (
-        <>
-            {label && <Styled.Label>{label}</Styled.Label>}
+        <Wrapper>
+            {label && <TextInputStyles.Label>{label}</TextInputStyles.Label>}
 
             <PhoneInputStyles
                 key={key}
@@ -69,12 +67,8 @@ const PhoneInput = ({
                     onPhoneNumberFocus={() => setIsFocused(true)}
                 />
             </PhoneInputStyles>
-        </>
+        </Wrapper>
     );
 };
 
-export {
-    PhoneInput,
-    PhoneInputStyles,
-    type PhoneInputProps,
-};
+export { PhoneInput, PhoneInputStyles, type PhoneInputProps };
