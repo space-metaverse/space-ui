@@ -1,46 +1,37 @@
-import { useEffect, useState } from 'react';
-import IntlTelInput from 'react-intl-tel-input';
+import { useState } from "react";
+import PhoneInputInternational from "react-phone-input-international";
+import "react-phone-input-international/lib/style.css";
 
-import { TextInputStyles } from '../TextInput';
-import PhoneInputStyles, { Wrapper } from './styles';
+import Styled from "../TextInput/styles";
+import PhoneInputStyles, { Wrapper } from "./styles";
 
 type PhoneInputProps = {
-    preferredCountries: string[];
+    mainCountry: string;
     isError?: boolean;
     value?: string;
     label?: string;
+    enableSearch?: boolean;
+    disableSearchIcon?: boolean;
     onChange?: (value: string) => void;
 };
-
-const regexInput = /[^0-9+()-]/gi;
-
 const PhoneInput = ({
     label,
-    value = '',
+    value = "",
     isError = false,
+    enableSearch = true,
+    disableSearchIcon = false,
     onChange = () => {},
-    preferredCountries = ['us', 'ca', 'br'],
+    mainCountry = "ca",
     ...props
 }: PhoneInputProps) => {
-    const [key, setKey] = useState<number>(0);
     const [isFocused, setIsFocused] = useState<boolean>(false);
-    const [inputValue, setInputValue] = useState(value);
     const [isHovering, setIsHovering] = useState<boolean>(false);
-
-    useEffect(() => {
-        setInputValue(value.replace(regexInput, ''));
-    }, [value]);
-
-    useEffect(() => {
-        setKey(k => k + 1);
-    }, [preferredCountries]);
 
     return (
         <Wrapper>
-            {label && <TextInputStyles.Label>{label}</TextInputStyles.Label>}
+            {label && <Styled.Label>{label}</Styled.Label>}
 
             <PhoneInputStyles
-                key={key}
                 isError={isError}
                 withLabel={!!label}
                 isFocused={isFocused}
@@ -49,26 +40,19 @@ const PhoneInput = ({
                 onMouseLeave={() => setIsHovering(false)}
                 {...props}
             >
-                <IntlTelInput
-                    value={inputValue}
-                    autoHideDialCode={false}
-                    separateDialCode={false}
-                    preferredCountries={preferredCountries}
-                    onPhoneNumberChange={(
-                        isValid,
-                        newValue,
-                        selectedCountryData,
-                        fullNumber,
-                    ) => {
-                        onChange(fullNumber.replace(regexInput, ''));
-                        setInputValue(newValue.replace(regexInput, ''));
-                    }}
-                    onPhoneNumberBlur={() => setIsFocused(false)}
-                    onPhoneNumberFocus={() => setIsFocused(true)}
+                <PhoneInputInternational
+                    country={mainCountry}
+                    value={value}
+                    enableSearch={enableSearch}
+                    disableSearchIcon={disableSearchIcon}
+                    onChange={onChange}
+                    onBlur={() => setIsFocused(false)}
+                    onFocus={() => setIsFocused(true)}
                 />
             </PhoneInputStyles>
         </Wrapper>
     );
 };
 
-export { PhoneInput, PhoneInputStyles, type PhoneInputProps };
+export { PhoneInput, PhoneInputStyles };
+export type { PhoneInputProps };
