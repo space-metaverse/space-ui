@@ -12,14 +12,16 @@ const Checkbox = ({
         {...props}
         disabled={disabled}
     >
-        <CheckboxStyles.Input
-            type="checkbox"
-            checked={isChecked}
-            onChange={onChange}
-            disabled={disabled}
-        />
-        <CheckboxStyles.Checkmark />
-        {label}
+        <>
+            <CheckboxStyles.Input
+                type="checkbox"
+                checked={isChecked}
+                onChange={onChange}
+                disabled={disabled}
+            />
+            <CheckboxStyles.Checkmark />
+            {label}
+        </>
     </CheckboxStyles.Label>
 );
 
