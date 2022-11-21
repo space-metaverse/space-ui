@@ -4,7 +4,7 @@
     "module": "./index.js",
     "types": "./index.d.ts",
     "dependencies": {
-        "react-intl-tel-input": "^8.2.0",
+        "react-phone-input-international": "^2.15.6",
         "react-svg": "^15.1.11",
         "styled-components": "^5.3.6",
         "typescript": "^4.8.4"
