@@ -29,12 +29,13 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
 
     const opened = () => onShow(true);
 
-    const closed = () => onShow(false);
+    const closed = () => {
+        onShow(false);
+        if (clear) clear();
+    }
 
     const outside = () => {
-        closed();
-
-        if (clear) clear();
+        closed(); 
     };
 
     useImperativeHandle(ref, () => ({
