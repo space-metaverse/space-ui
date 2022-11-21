@@ -84,11 +84,6 @@ export const Option = styled.div<OptionStylesProps>`
     letter-spacing: 1px;
   }
 
-  path {
-    stroke: ${({ theme, disabled }) => (disabled ? theme.colors.dark['400'] : theme.colors.dark['800'])};
-    stroke-width: 2px;
-  }
-
   ${({ child = false }) => child && css`
     padding: .625rem 0;
     margin-left: .5rem;
