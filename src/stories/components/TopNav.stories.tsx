@@ -63,6 +63,8 @@ Default.args = {
             callback: () => {}
         }
     ],
+    className: '',
+    signInRoute: ''
 };
 Default.parameters = {
     controls: {

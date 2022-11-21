@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
+import { Logout as IconLogout } from '../../icons';
 import { Popover, type PopoverProps } from '../Popover';
+import { logo } from './logo';
 import TopNavStyles from './styles';
-import { logo } from "./logo"
 
 type UserProps = {
     name: string
@@ -21,6 +22,7 @@ type TopNavProps = {
     routes: RouteProps[]
     options?: PopoverProps['options']
     className?: string
+    signInRoute?: string
 };
 
 const TopNav: React.FC<TopNavProps> = ({
@@ -28,6 +30,7 @@ const TopNav: React.FC<TopNavProps> = ({
     routes,
     options,
     className,
+    signInRoute,
 }) => {
     const [responsive, setResponsive] = useState(false);
 
@@ -64,33 +67,47 @@ const TopNav: React.FC<TopNavProps> = ({
                 ))}
             </TopNavStyles.Routes>
 
-            <TopNavStyles.Actions>
-                {user && (
-                    <>
-                        <TopNavStyles.Profile>
-                            {user.avatar && (
-                                <img
-                                    src={user.avatar}
-                                    alt={user.name}
-                                    width={32}
-                                    height={32}
-                                />
-                            )}
-                        </TopNavStyles.Profile>
+            {signInRoute && (
+                <TopNavStyles.Actions
+                    as="a"
+                    href={signInRoute}
+                    className="is-sign"
+                >
+                    <IconLogout />
 
-                        <p>{user.name}</p>
-                    </>
-                )}
+                    <p>SIGN IN</p>
+                </TopNavStyles.Actions>
+            )}
 
-                {options && (
-                    <Popover
-                        options={options}
-                        className="is-popover"
-                    >
-                        <TopNavStyles.IconAction />
-                    </Popover>
-                )}
-            </TopNavStyles.Actions>
+            {!signInRoute && (
+                <TopNavStyles.Actions>
+                    {user && (
+                        <>
+                            <TopNavStyles.Profile>
+                                {user.avatar && (
+                                    <img
+                                        src={user.avatar}
+                                        alt={user.name}
+                                        width={32}
+                                        height={32}
+                                    />
+                                )}
+                            </TopNavStyles.Profile>
+
+                            <p>{user.name}</p>
+                        </>
+                    )}
+
+                    {options && (
+                        <Popover
+                            options={options}
+                            className="is-popover"
+                        >
+                            <TopNavStyles.IconAction />
+                        </Popover>
+                    )}
+                </TopNavStyles.Actions>
+            )}
 
             <TopNavStyles.Hamburger
                 show={responsive}
