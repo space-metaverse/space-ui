@@ -20,7 +20,7 @@ const Checkbox = ({
                 disabled={disabled}
             />
             <CheckboxStyles.Checkmark />
-            {label}
+            <span>{label}</span>
         </>
     </CheckboxStyles.Label>
 );
