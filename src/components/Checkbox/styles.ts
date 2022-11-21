@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import type { CheckboxProps } from './types';
+import type { CheckboxProps } from "./types";
 
 const checked = css`
-    border-color: ${({ theme }) => theme.colors.dark['700']};
-    background-color: ${({ theme }) => theme.colors.dark['700']};
+    border-color: ${({ theme }) => theme.colors.dark["700"]};
+    background-color: ${({ theme }) => theme.colors.dark["700"]};
 `;
 
 const BaseInput = styled.input`
@@ -22,16 +22,16 @@ const BaseInput = styled.input`
 
 const BaseCheck = styled.span`
     width: 1.25rem;
-    border: ${({ theme }) => `1px solid ${theme.colors.dark['500']}`};
+    border: ${({ theme }) => `1px solid ${theme.colors.dark["500"]}`};
     height: 1.25rem;
     display: flex;
     transition: ${({ theme }) => theme.transitions.ease};
     align-items: center;
-    margin-right: .75rem;
+    margin-right: 0.75rem;
     justify-content: center;
 
     &::after {
-        content: '';
+        content: "";
         opacity: 0;
         position: absolute;
         transition: ${({ theme }) => theme.transitions.ease};
@@ -39,11 +39,12 @@ const BaseCheck = styled.span`
     }
 `;
 
-const BaseLabel = styled.label<Pick<CheckboxProps, 'disabled'>>`
+const BaseLabel = styled.label<Pick<CheckboxProps, "disabled">>`
     ${({ theme }) => theme.fonts.size.sm};
     width: fit-content;
-    color: ${({ theme, disabled }) => (disabled ? theme.colors.dark['600'] : theme.colors.dark['800'])};
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    color: ${({ theme, disabled }) =>
+        disabled ? theme.colors.dark["600"] : theme.colors.dark["800"]};
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
     display: flex;
     position: relative;
     user-select: none;
@@ -51,12 +52,14 @@ const BaseLabel = styled.label<Pick<CheckboxProps, 'disabled'>>`
     font-weight: ${({ theme }) => theme.fonts.weight.medium};
     font-family: ${({ theme }) => theme.fonts.family.body};
 
-    ${({ disabled }) => disabled && css`
-        ${BaseCheck} {
-            cursor: not-allowed;
-            opacity: .5;
-        }
-    `}
+    ${({ disabled }) =>
+        disabled &&
+        css`
+            ${BaseCheck} {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+        `}
 `;
 
 const Input = styled(BaseInput)`
@@ -64,16 +67,16 @@ const Input = styled(BaseInput)`
         ${checked};
 
         &::after {
-            top: .25rem;
+            top: 0.25rem;
         }
     }
 `;
 
 const Checkmark = styled(BaseCheck)`
     border-radius: ${({ theme }) => theme.radius.sm};
-    
+
     &::after {
-        top: .5rem;
+        top: 0.5rem;
         width: 0.3rem;
         height: 0.6rem;
         border: ${({ theme }) => `solid ${theme.colors.white}`};
@@ -87,6 +90,13 @@ const Label = styled(BaseLabel)`
         ${Checkmark} {
             ${checked};
         }
+    }
+
+    a {
+        color: #3332fe;
+        text-decoration: none;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
     }
 `;
 
