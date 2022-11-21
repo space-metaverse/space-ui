@@ -1,3 +1,5 @@
+import '../src/index.css'
+
 import React from 'react';
 
 import { GlobalStyles, ThemeProvider } from '../src/components/Theme';
