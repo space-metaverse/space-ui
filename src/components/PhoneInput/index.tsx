@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PhoneInputInternational from "react-phone-input-international";
-import "react-phone-input-international/lib/style.css";
 
 import Styled from "../TextInput/styles";
 import PhoneInputStyles, { Wrapper } from "./styles";
