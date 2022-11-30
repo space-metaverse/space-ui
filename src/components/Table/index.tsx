@@ -51,7 +51,11 @@ const Table = ({
                 <TableStyles.HeadRow>
                     {
                         columns.map((column, index) => (
-                            <TableStyles.HeadData key={`${column}-${index.toString()}`} onClick={() => handleColumnFilter(column)}>
+                            <TableStyles.HeadData
+                                key={`${column}-${index.toString()}`}
+                                scope="col"
+                                onClick={() => handleColumnFilter(column)}
+                            >
                                 <TableStyles.HeadGrid>
                                     {
                                         (typeof Object.values(rows?.[0])?.[index] === 'number'
@@ -86,7 +90,12 @@ const Table = ({
                         <TableStyles.BodyRow key={`${row}-${index.toString()}`}>
                             {
                                 Object.values(row).map((data: any, idx) => (
-                                    <TableStyles.BodyData key={`${data}-${idx.toString()}`}>{data}</TableStyles.BodyData>
+                                    <TableStyles.BodyData
+                                        key={`${data}-${idx.toString()}`}
+                                        data-label={columns[idx]}
+                                    >
+                                        {data}
+                                    </TableStyles.BodyData>
                                 ))
                             }
                         </TableStyles.BodyRow>
