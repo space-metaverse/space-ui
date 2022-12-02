@@ -63,7 +63,7 @@ const SideNav: React.FC<SideNavProps> = ({
     title,
     routes,
     goBack,
-    onNavigate
+    onNavigate,
 }) => {
     const [show, setShow] = useState(-1);
     const [dropdown, setDropdown] = useState(false);
