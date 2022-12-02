@@ -160,10 +160,13 @@ export const Wrapper = styled.div<WrapperStylesProps>`
     }
 
     ${({ dropdown }) => dropdown && css`
+      ${Options} {
+        pointer-events: auto;
+      }
+
       & > ${Options} {
         top: 4.5rem;
         opacity: 1;
-        pointer-events: auto;
       }
     `}
   }
