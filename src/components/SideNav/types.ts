@@ -26,6 +26,7 @@ export type SideNavProps = {
     title?: string
     routes: OptionProps[]
     goBack?: VoidFunction
+    onNavigate?: (route: string) => void
 };
 
 export interface OptionStylesProps {
