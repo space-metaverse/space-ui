@@ -146,21 +146,27 @@ export const Wrapper = styled.div<WrapperStylesProps>`
       display: flex;
     }
 
+    ${Options} {
+      pointer-events: none;
+    }
+
     & > ${Options} {
       top: 3.5rem;
       width: 100%;
       opacity: 0;
       position: absolute;
       border-radius: ${({ theme }) => theme.radius['2xl']};
-      pointer-events: none;
       background-color: ${({ theme }) => theme.colors.dark['100']};
     }
 
     ${({ dropdown }) => dropdown && css`
+      ${Options} {
+        pointer-events: auto;
+      }
+
       & > ${Options} {
         top: 4.5rem;
         opacity: 1;
-        pointer-events: auto;
       }
     `}
   }
