@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction, HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
 export interface StyledTabProps {
     activeTab: boolean;
@@ -6,6 +6,6 @@ export interface StyledTabProps {
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
     tabs: string[];
-    onChange?: Dispatch<SetStateAction<string>>;
+    onChange?: (tab: string) => void;
     activeTab?: string;
 }

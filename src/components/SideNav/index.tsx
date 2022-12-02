@@ -63,6 +63,7 @@ const SideNav: React.FC<SideNavProps> = ({
     title,
     routes,
     goBack,
+    onNavigate
 }) => {
     const [show, setShow] = useState(-1);
     const [dropdown, setDropdown] = useState(false);
@@ -75,7 +76,13 @@ const SideNav: React.FC<SideNavProps> = ({
 
         setDropdown(false);
 
-        if (route) window.location.href = route;
+        if (route) {
+            if (onNavigate) {
+                onNavigate(route);
+            } else {
+                window.location.href = route;
+            }
+        }
     };
 
     useEffect(() => {
