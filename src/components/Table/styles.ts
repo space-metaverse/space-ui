@@ -65,6 +65,44 @@ const Wrapper = styled.table<Omit<TableProps, 'rows'>>`
             border-bottom: 1px solid ${theme.colors.dark['200']};
         }
     `}
+
+    @media screen and (max-width: 824px) {
+        border: 0;
+
+        ${Head} {
+            display: none;
+        }
+
+        ${BodyRow} {
+            border: ${({ theme }) => `1px solid ${theme.colors.dark['200']}`};
+            display: block;
+            margin-bottom: .75rem;
+            border-radius: ${({ theme }) => theme.radius.md};
+        }
+
+        ${BodyData} {
+            display: block;
+            padding: .75rem 1rem;
+            text-align: right;
+            border-bottom: ${({ theme }) => `1px solid ${theme.colors.dark['200']}`};
+
+            > * {
+                width: fit-content;
+                height: auto;
+                margin-left: auto;
+            }
+
+            &::before {
+                float: left;
+                margin: auto 0;
+                content: attr(data-label);
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
 `;
 
 export default {
