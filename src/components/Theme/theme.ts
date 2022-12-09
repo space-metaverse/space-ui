@@ -1,11 +1,4 @@
-import {
-    css,
-    keyframes,
-    createGlobalStyle,
-    type DefaultTheme,
-} from 'styled-components';
-
-import reset from './reset';
+import { css, keyframes, type DefaultTheme } from 'styled-components';
 
 const bounce = keyframes`
     0%, 20%, 50%, 80%, 100% {
@@ -126,40 +119,7 @@ const animations = {
     `,
 };
 
-const GlobalStyles = createGlobalStyle`
-    @font-face {
-        font-family: Aeroport;
-        src: url("../../fonts/Aeroport.otf");
-        font-weight: 400;
-    }
-    @font-face {
-        font-family: Aeroport;
-        src: url("../../fonts/Aeroport_Light.otf");
-        font-weight: 300;
-    }
-    @font-face {
-        font-family: Aeroport;
-        src: url("../../fonts/Aeroport_Medium.otf");
-        font-weight: 500;
-    }
-    @font-face {
-        font-family: Aeroport;
-        src: url("../../fonts/Aeroport_Bold.otf");
-        font-weight: 700;
-    }
-
-    /**
-     * Apply reset styles.
-     */
-    ${reset}
-
-    body {
-        font-family: ${theme.fonts.family.sans};
-    }
-`;
-
 export {
     theme,
     animations,
-    GlobalStyles,
 };
