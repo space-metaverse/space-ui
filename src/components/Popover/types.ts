@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 
 import type { SVGProps } from '../../icons';
 
@@ -16,7 +16,9 @@ export type PopoverOptionProps = {
 };
 
 export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
+    show?: boolean
     options: PopoverOptionProps[];
+    onShow?: Dispatch<SetStateAction<boolean>>;
     onHover?: boolean;
     position?: PositionProps;
     keepOpenOnClick?: boolean;

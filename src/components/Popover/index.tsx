@@ -5,6 +5,8 @@ import PopoverStyles from './styles';
 import type { PopoverProps, ElementInfo } from './types';
 
 const Popover = ({
+    show,
+    onShow,
     options,
     onHover,
     children,
@@ -12,7 +14,7 @@ const Popover = ({
     keepOpenOnClick,
     ...rest
 }: PopoverProps) => {
-    const [show, onShow] = useState(false);
+    const [toggle, onToggle] = useState(show ?? false);
     const [childInfo, onChildInfo] = useState<ElementInfo>({
         width: 0,
         height: 0,
@@ -22,13 +24,21 @@ const Popover = ({
         height: 0,
     });
 
-    const toggle = () => onShow(!show);
+    const changeToggle = () => {
+        onToggle(prev => !prev);
+
+        if (onShow) onShow(prev => !prev);
+    };
 
     const ref = useRef<HTMLDivElement>(null);
     const refChild = useRef<HTMLDivElement>(null);
     const refPopover = useRef<HTMLDivElement>(null);
 
-    useOutsideClick(ref, () => onShow(false));
+    useOutsideClick(ref, () => {
+        onToggle(false);
+
+        if (onShow) onShow(false);
+    });
 
     useEffect(() => {
         if (refPopover.current) {
@@ -45,8 +55,8 @@ const Popover = ({
     }, [refPopover, refChild]);
 
     const mouseActions = {
-        onMouseEnter: () => (onHover ? onShow(true) : null),
-        onMouseLeave: () => (onHover ? onShow(false) : null),
+        onMouseEnter: () => (onHover ? onToggle(true) : null),
+        onMouseLeave: () => (onHover ? onToggle(false) : null),
     };
 
     return (
@@ -56,14 +66,14 @@ const Popover = ({
                 {...mouseActions}
                 ref={refChild}
                 role="presentation"
-                onClick={() => (!onHover ? toggle() : null)}
+                onClick={() => (!onHover ? changeToggle() : null)}
             >
                 {children}
             </PopoverStyles.Wrapper>
 
             <PopoverStyles.Box
                 ref={refPopover}
-                show={show}
+                show={toggle}
                 {...mouseActions}
                 position={position}
                 childInfo={childInfo}
@@ -76,7 +86,7 @@ const Popover = ({
                             type="button"
                             onClick={e => {
                                 e.preventDefault();
-                                if (!keepOpenOnClick) toggle();
+                                if (!keepOpenOnClick) changeToggle();
                                 if (callback) callback();
                             }}
                         >
