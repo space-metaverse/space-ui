@@ -22,6 +22,7 @@ type TopNavProps = {
     routes: RouteProps[]
     options?: PopoverProps['options']
     className?: string
+    logoRoute?: string
     signInRoute?: string
 };
 
@@ -30,6 +31,7 @@ const TopNav: React.FC<TopNavProps> = ({
     routes,
     options,
     className,
+    logoRoute,
     signInRoute,
 }) => {
     const [responsive, setResponsive] = useState(false);
@@ -39,7 +41,7 @@ const TopNav: React.FC<TopNavProps> = ({
             show={responsive}
             className={className}
         >
-            <TopNavStyles.Logo href="/">
+            <TopNavStyles.Logo href={logoRoute || '/'}>
                 <img
                     src={logo}
                     alt="Logo space"
