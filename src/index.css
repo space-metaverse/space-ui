@@ -1,1 +1,95 @@
-@import "react-phone-input-international/lib/style.css"
+@import "react-phone-input-international/lib/style.css";
+
+@font-face {
+  font-family: 'Aeroport';
+  src: url("./fonts/Aeroport.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Aeroport';
+  src: url("./fonts/Aeroport_Light.otf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Aeroport';
+  src: url("./fonts/Aeroport_Medium.otf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Aeroport';
+  src: url("./fonts/Aeroport_Bold.otf");
+  font-weight: 700;
+}
+
+/**
+* Apply reset styles.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a, button {
+  cursor: revert;
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input, textarea {
+  user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+  line-break: after-white-space;
+  user-select: auto;
+  overflow-wrap: break-word;
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+}
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+body {
+  margin: 0;
+  font-family: Aeroport, 'sans-serif';
+}
