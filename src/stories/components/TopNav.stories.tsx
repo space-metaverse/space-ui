@@ -64,6 +64,7 @@ Default.args = {
         }
     ],
     className: '',
+    logoRoute: '/',
     signInRoute: ''
 };
 Default.parameters = {
