@@ -12,14 +12,16 @@ export type SimpleOptionProps = Pick<ChildrenProps, 'Icon' | 'label'>;
 export interface OptionProps extends SimpleOptionProps {
     route: string | null
     disabled: boolean
+    selected?: boolean
     children?: ChildrenProps[]
 }
 
 export type OptionComponentProps = OptionProps & {
     show: boolean
     select: (option: SimpleOptionProps, route: string | null) => void
-    selected?: string
+    selected?: boolean
     toggleState: VoidFunction
+    activeField?: string
 };
 
 export type SideNavProps = {

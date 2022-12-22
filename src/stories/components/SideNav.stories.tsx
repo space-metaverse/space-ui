@@ -9,7 +9,6 @@ import {
     Friends,
     Profile,
     Security,
-    ArrowLeft,
     Collection,
     FriendsAdd,
     FriendsList,
@@ -36,6 +35,7 @@ Default.args = {
           label: 'Profile',
           route: null,
           disabled: false,
+          selected: false,
           children: [
             {
               Icon: Profile,
@@ -62,6 +62,7 @@ Default.args = {
           label: 'Friends',
           route: null,
           disabled: true,
+          selected: false,
           children: [
             {
               Icon: FriendsList,
@@ -85,6 +86,7 @@ Default.args = {
           route: null,
           label: 'Connected Wallets',
           disabled: false,
+          selected: false,
           children: [
             {
               Icon: ConnectedWallets,
@@ -102,13 +104,15 @@ Default.args = {
           Icon: NFT,
           label: 'NFT Inventory',
           route: '/nft-inventory',
-          disabled: true
+          disabled: false,
+          selected: true,
         },
         {
           Icon: Collection,
           label: 'Space Inventory',
           route: '/space-inventory',
-          disabled: true
+          disabled: true,
+          selected: false,
         }
     ],
 };
