@@ -14,6 +14,7 @@ const Option: React.FC<OptionComponentProps> = ({
     disabled,
     selected,
     children,
+    activeField,
     toggleState,
 }) => (
     <SideNavStyles.OptionWrapper>
@@ -26,7 +27,7 @@ const Option: React.FC<OptionComponentProps> = ({
             }}
             animate={show}
             disabled={disabled}
-            selected={label === selected && !children}
+            selected={(selected || (label === activeField)) && !children}
         >
             <Icon width={24} height={24} />
             <p>{label}</p>
@@ -47,7 +48,7 @@ const Option: React.FC<OptionComponentProps> = ({
                                 }, item.route);
                             }
                         }}
-                        selected={selected === item.label}
+                        selected={activeField === item.label}
                         disabled={item.disabled}
                     >
                         <item.Icon width={24} height={24} />
@@ -155,7 +156,7 @@ const SideNav: React.FC<SideNavProps> = ({
                         key={props.label}
                         show={show === index}
                         select={navigate}
-                        selected={optionSelected?.label}
+                        activeField={optionSelected?.label}
                         toggleState={() => setShow(prev => (prev !== index ? index : -1))}
                     >
                         {props.children}
