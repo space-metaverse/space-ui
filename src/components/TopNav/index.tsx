@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Logout as IconLogout } from '../../icons';
+import { Logout as IconLogout, Search as IconSearch } from '../../icons';
 import { Popover } from '../Popover';
 import { logo } from './logo';
 import SearchBar from './searchbar';
@@ -32,7 +32,7 @@ const TopNav: React.FC<TopNavProps> = ({
                 />
             </TopNavStyles.Logo>
 
-            {searchBar && <SearchBar />}
+            {searchBar && <SearchBar {...searchBar} />}
 
             {!searchBar && (
                 <TopNavStyles.Routes>
@@ -53,6 +53,12 @@ const TopNav: React.FC<TopNavProps> = ({
                         </li>
                     ))}
                 </TopNavStyles.Routes>
+            )}
+
+            {searchBar && (
+                <TopNavStyles.SearchButton>
+                    <IconSearch />
+                </TopNavStyles.SearchButton>
             )}
 
             {signInRoute && (

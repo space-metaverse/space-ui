@@ -1,3 +1,5 @@
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+
 import { type PopoverProps } from '../Popover';
 
 type UserProps = {
@@ -12,15 +14,17 @@ type RouteProps = {
     isExternal?: boolean
 };
 
-export type SearchBarProps = {
+export type SearchBarProps = HTMLAttributes<HTMLInputElement> & {
     options?: string[]
+    onSubmit: VoidFunction
+    onOption?: Dispatch<SetStateAction<string>>
 };
 
 export type TopNavProps = {
     user?: UserProps
     routes: RouteProps[]
     options?: PopoverProps['options']
-    searchBar?: boolean
+    searchBar?: SearchBarProps
     className?: string
     logoRoute?: string
     signInRoute?: string
