@@ -16,6 +16,12 @@ const Logo = styled.a`
     border-right: ${({ theme }) => `1px solid ${theme.colors.dark[200]}`};
 `;
 
+const Input = styled.div`
+    display: flex;
+    position: relative;
+    align-items: center;
+`;
+
 const Route = styled.a<RouteProps>`
     ${({ theme }) => theme.fonts.size.sm};
     color: ${({ theme, disabled }) => (disabled ? theme.colors.dark['400'] : theme.colors.dark['800'])};
@@ -78,6 +84,10 @@ const Actions = styled.div`
         }
     }
 `;
+
+const Target = styled.input``;
+
+const Select = styled.select``;
 
 const Profile = styled.div`
     width: 2rem;
@@ -212,6 +222,12 @@ const Wrapper = styled.nav<ResponsiveProps>`
     }
 `;
 
+const SearchBar = {
+    Input,
+    Target,
+    Select,
+};
+
 export default {
     Logo,
     Route,
@@ -219,6 +235,7 @@ export default {
     Wrapper,
     Actions,
     Profile,
+    SearchBar,
     Hamburger,
     IconAction,
 };
