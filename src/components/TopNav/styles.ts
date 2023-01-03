@@ -58,7 +58,7 @@ const Search = styled.div`
     gap: 1rem;
     width: 100%;
     display: flex;
-    padding: .875rem 2rem;
+    padding: .25rem 2rem;
     max-width: 44.5rem;
     transition: ${({ theme }) => theme.transitions.ease};
     align-items: center;
