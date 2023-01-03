@@ -16,7 +16,8 @@ type RouteProps = {
 
 export type SearchBarProps = HTMLAttributes<HTMLInputElement> & {
     options?: string[]
-    onSubmit: VoidFunction
+    onClose?: VoidFunction
+    onSubmit: (value: string) => void
     onOption?: Dispatch<SetStateAction<string>>
 };
 
@@ -24,7 +25,7 @@ export type TopNavProps = {
     user?: UserProps
     routes: RouteProps[]
     options?: PopoverProps['options']
-    searchBar?: SearchBarProps
+    searchBar?: Omit<SearchBarProps, 'onClose'>
     className?: string
     logoRoute?: string
     signInRoute?: string

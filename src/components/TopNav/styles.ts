@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Dots } from '../../icons';
+import { Dots, DropLeft } from '../../icons';
 
 interface RouteProps {
     disabled?: boolean
@@ -8,6 +8,7 @@ interface RouteProps {
 
 interface ResponsiveProps {
     show: boolean
+    search: boolean
 }
 
 const Logo = styled.a`
@@ -22,9 +23,7 @@ const Input = styled.div`
     border: ${({ theme }) => `1px solid ${theme.colors.dark[300]}`};
     display: flex;
     position: relative;
-    max-width: 44.5rem;
     transition: ${({ theme }) => theme.transitions.ease};
-    margin-left: 2rem;
     align-items: center;
     border-radius: ${({ theme }) => theme.radius['2xl']};
 
@@ -52,6 +51,26 @@ const Input = styled.div`
 
     &:hover {
         border-color: ${({ theme }) => theme.colors.dark[400]};
+    }
+`;
+
+const Search = styled.div`
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    padding: .875rem 2rem;
+    max-width: 44.5rem;
+    transition: ${({ theme }) => theme.transitions.ease};
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.white};
+`;
+
+const IconChevron = styled(DropLeft)`
+    display: none;
+    cursor: pointer;
+
+    path {
+        stroke: ${({ theme }) => theme.colors.dark[500]};
     }
 `;
 
@@ -192,7 +211,7 @@ const Profile = styled.div`
     }
 `;
 
-const Hamburger = styled.div<ResponsiveProps>`
+const Hamburger = styled.div<Omit<ResponsiveProps, 'search'>>`
     top: 1.25rem;
     width: 1rem;
     right: 1.25rem;
@@ -298,7 +317,6 @@ const Wrapper = styled.nav<ResponsiveProps>`
             flex-direction: column;
         }
 
-        ${Input},
         ${Routes},
         ${Actions} {
             display: none;
@@ -313,7 +331,24 @@ const Wrapper = styled.nav<ResponsiveProps>`
             }
         }
 
+        ${Search} {
+            top: -5rem;
+            left: 0;
+            opacity: 0;
+            padding: .875rem 1rem;
+            position: fixed;
+            max-width: 100%;
+            border-bottom: ${({ theme }) => `1px solid ${theme.colors.dark[200]}`};
+
+            ${Input} button {
+                width: fit-content;
+                padding: 1rem;
+                max-width: 100%;
+            }
+        }
+
         ${Hamburger},
+        ${IconChevron},
         ${SearchButton} {
             display: flex;
         }
@@ -324,6 +359,14 @@ const Wrapper = styled.nav<ResponsiveProps>`
                 display: flex;
             }
         `}
+
+        ${({ search }) => search && css`
+            ${Search} {
+                top: 0;
+                opacity: 1;
+                z-index: 99;
+            }
+        `}
     }
 `;
 
@@ -331,6 +374,8 @@ const SearchBar = {
     Input,
     Target,
     Select,
+    Search,
+    IconChevron,
 };
 
 export default {

@@ -16,11 +16,13 @@ const TopNav: React.FC<TopNavProps> = ({
     logoRoute,
     signInRoute,
 }) => {
+    const [search, setSearch] = useState(false);
     const [responsive, setResponsive] = useState(false);
 
     return (
         <TopNavStyles.Wrapper
             show={responsive}
+            search={search}
             className={className}
         >
             <TopNavStyles.Logo href={logoRoute || '/'}>
@@ -32,7 +34,12 @@ const TopNav: React.FC<TopNavProps> = ({
                 />
             </TopNavStyles.Logo>
 
-            {searchBar && <SearchBar {...searchBar} />}
+            {searchBar && (
+                <SearchBar
+                    {...searchBar}
+                    onClose={() => setSearch(false)}
+                />
+            )}
 
             {!searchBar && (
                 <TopNavStyles.Routes>
@@ -56,7 +63,7 @@ const TopNav: React.FC<TopNavProps> = ({
             )}
 
             {searchBar && (
-                <TopNavStyles.SearchButton>
+                <TopNavStyles.SearchButton onClick={() => setSearch(true)}>
                     <IconSearch />
                 </TopNavStyles.SearchButton>
             )}
