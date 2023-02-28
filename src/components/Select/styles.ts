@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import type { SelectStylesProps } from './types';
 
 const Wrapper = styled.div`
-
+    display: flex;
+    flex-direction: column;
 `;
 
 const Select = styled.select<{ $isLabel: boolean }>`
