@@ -5,6 +5,7 @@ import type { SelectProps } from './types';
 
 const Select = ({
     options = [],
+    label,
     onChange,
     selectedOption,
     ...rest
@@ -20,17 +21,20 @@ const Select = ({
     };
 
     return (
-        <SelectStyles.Wrapper onChange={handleSelect} value={selectedToUse} {...rest}>
-            {options.map(option => (
-                <SelectStyles.Option
-                    key={option}
-                    value={option}
-                    isSelected={option === selectedToUse}
-                >
-                    {option}
-                </SelectStyles.Option>
-            ))}
-        </SelectStyles.Wrapper>
+        <SelectStyles.Wrapper>
+            {label && <SelectStyles.Label>{label}</SelectStyles.Label>}
+            <SelectStyles.Select onChange={handleSelect} value={selectedToUse} $isLabel={!!label} {...rest}>
+                {options.map(option => (
+                    <SelectStyles.Option
+                        key={option}
+                        value={option}
+                        isSelected={option === selectedToUse}
+                    >
+                        {option}
+                    </SelectStyles.Option>
+                ))}
+            </SelectStyles.Select>
+        </SelectStyles.Wrapper >
     );
 };
 

@@ -32,10 +32,10 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
     const closed = () => {
         onShow(false);
         if (clear) clear();
-    }
+    };
 
     const outside = () => {
-        closed(); 
+        closed();
     };
 
     useImperativeHandle(ref, () => ({
@@ -72,7 +72,9 @@ const Component: React.ForwardRefRenderFunction<ModalProps, ModalBaseProps> = ({
                 </ModalStyles.Body>
 
                 {actions && (
-                    <ModalStyles.Footer twoActions={!!actions.secondary && !!actions.primary ? true : false}>
+                    <ModalStyles.Footer
+                        twoActions={!!(!!actions.secondary && !!actions.primary)}
+                    >
                         {!!actions.secondary && (
                             <Button
                                 {...actions.secondary}

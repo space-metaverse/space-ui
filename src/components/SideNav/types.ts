@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import type { SVGProps } from '../../icons';
 
 interface ChildrenProps {
@@ -25,7 +26,7 @@ export type OptionComponentProps = OptionProps & {
 };
 
 export type SideNavProps = {
-    title?: string
+    title?: string | ReactNode
     routes: OptionProps[]
     goBack?: VoidFunction
     onNavigate?: (route: string) => void

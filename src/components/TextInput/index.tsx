@@ -73,7 +73,6 @@ const TextInput = ({
                         <TextInputStyles.PasswordToggleWrapper
                             as={showPasswordToUse ? EyeOpen : EyeClose}
                             onClick={handlePasswordToggle}
-                            disabled={disabled}
                         />
                     )
                 }

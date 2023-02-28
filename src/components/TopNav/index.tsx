@@ -1,44 +1,28 @@
 import { useState } from 'react';
 
-import { Logout as IconLogout } from '../../icons';
-import { Popover, type PopoverProps } from '../Popover';
+import { Logout as IconLogout, Search as IconSearch } from '../../icons';
+import { Popover } from '../Popover';
 import { logo } from './logo';
+import SearchBar from './searchbar';
 import TopNavStyles from './styles';
-
-type UserProps = {
-    name: string
-    avatar: string | null
-};
-
-type RouteProps = {
-    route: string
-    label: string
-    disabled?: boolean
-    isExternal?: boolean
-};
-
-type TopNavProps = {
-    user?: UserProps
-    routes: RouteProps[]
-    options?: PopoverProps['options']
-    className?: string
-    logoRoute?: string
-    signInRoute?: string
-};
+import type { TopNavProps } from './types';
 
 const TopNav: React.FC<TopNavProps> = ({
     user,
     routes,
     options,
     className,
+    searchBar,
     logoRoute,
     signInRoute,
 }) => {
+    const [search, setSearch] = useState(false);
     const [responsive, setResponsive] = useState(false);
 
     return (
         <TopNavStyles.Wrapper
             show={responsive}
+            search={search}
             className={className}
         >
             <TopNavStyles.Logo href={logoRoute || '/'}>
@@ -50,24 +34,39 @@ const TopNav: React.FC<TopNavProps> = ({
                 />
             </TopNavStyles.Logo>
 
-            <TopNavStyles.Routes>
-                {routes.map(({
-                    route,
-                    label,
-                    disabled,
-                    isExternal,
-                }) => (
-                    <li key={route}>
-                        <TopNavStyles.Route
-                            href={route}
-                            target={isExternal ? '_blank' : '_self'}
-                            disabled={disabled}
-                        >
-                            {label}
-                        </TopNavStyles.Route>
-                    </li>
-                ))}
-            </TopNavStyles.Routes>
+            {searchBar && (
+                <SearchBar
+                    {...searchBar}
+                    onClose={() => setSearch(false)}
+                />
+            )}
+
+            {!searchBar && (
+                <TopNavStyles.Routes>
+                    {routes.map(({
+                        route,
+                        label,
+                        disabled,
+                        isExternal,
+                    }) => (
+                        <li key={route}>
+                            <TopNavStyles.Route
+                                href={route}
+                                target={isExternal ? '_blank' : '_self'}
+                                disabled={disabled}
+                            >
+                                {label}
+                            </TopNavStyles.Route>
+                        </li>
+                    ))}
+                </TopNavStyles.Routes>
+            )}
+
+            {searchBar && (
+                <TopNavStyles.SearchButton onClick={() => setSearch(true)}>
+                    <IconSearch />
+                </TopNavStyles.SearchButton>
+            )}
 
             {signInRoute && (
                 <TopNavStyles.Actions
