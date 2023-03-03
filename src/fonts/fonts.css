@@ -19,6 +19,11 @@
 }
 
 @font-face {
+    font-family: "Inter";
+    src: 'url("./Inter-VariableFont.ttf")';
+}
+
+@font-face {
     font-family: "Inter Black";
     src: 'url("./Inter-Black.ttf")';
 }
