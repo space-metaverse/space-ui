@@ -145,7 +145,13 @@ const SideNav: React.FC<SideNavProps> = ({
                             <ArrowLeft />
                         </SideNavStyles.BackIconButton>
                     )}
-                    <SideNavStyles.Title>{title}</SideNavStyles.Title>
+                    {
+                        typeof title === 'string' ? (
+                            <SideNavStyles.Title>{title}</SideNavStyles.Title>
+                        ) : (
+                            title
+                        )
+                    }
                 </SideNavStyles.Content>
             )}
 
