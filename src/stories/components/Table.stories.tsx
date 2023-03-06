@@ -11,9 +11,6 @@ import nikeImage from '../assets/nike.png';
 export default {
     title: 'Example/Table',
     component: Table,
-    argTypes: {
-
-    },
 } as ComponentMeta<typeof Table>;
 
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
@@ -75,6 +72,7 @@ Default.args = {
     ],
     columns: ['Space Name', 'Users', 'Products', 'Events', 'Orders', 'Action', 'Share'],
     withBorder: false,
+    onRowClick: (row: any) => console.log(row),
 };
 Default.parameters = {
     controls: {
