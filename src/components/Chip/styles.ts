@@ -15,7 +15,9 @@ export default styled.span.attrs(({ color }) => ({
     width: fit-content;
     padding: 0.25rem .75rem;
     font-weight: ${({ theme }) => theme.fonts.weight.medium};
-    font-family: ${({ theme }) => theme.fonts.family.body};
+    font-family: ${({ theme }) => theme.fonts.family.body} !important;
+    letter-spacing: 0.25px !important;
+    text-transform: none !important;
     border-radius: ${({ theme }) => theme.radius['3xl']};
 
     ${({ theme, color }) => {

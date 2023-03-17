@@ -4,7 +4,7 @@ import type { SVGProps } from '../../icons';
 interface ChildrenProps {
     Icon: (props?: SVGProps) => JSX.Element
     route: string
-    label: string
+    label: string | ReactNode
     disabled?: boolean
 }
 
