@@ -6,6 +6,7 @@ import * as SideNavStyles from './styles';
 import type { SideNavProps, SimpleOptionProps, OptionComponentProps } from './types';
 
 const Option: React.FC<OptionComponentProps> = ({
+    index,
     show,
     Icon,
     route,
@@ -21,13 +22,13 @@ const Option: React.FC<OptionComponentProps> = ({
         <SideNavStyles.Option
             onClick={() => {
                 if (!disabled) {
-                    if (!children) select({ label, Icon }, route);
+                    if (!children) select({ label, Icon, index }, route);
                     toggleState();
                 }
             }}
             animate={show}
             disabled={disabled}
-            selected={(selected || (label === activeField)) && !children}
+            selected={(selected || (activeField === index) || (activeField === label)) && !children}
         >
             <Icon width={24} height={24} />
             <p>{label}</p>
@@ -45,10 +46,11 @@ const Option: React.FC<OptionComponentProps> = ({
                                 select({
                                     Icon: item.Icon,
                                     label: item.label,
+                                    index: item.index,
                                 }, item.route);
                             }
                         }}
-                        selected={(activeField === item.key) || (activeField === item.label)}
+                        selected={(activeField === item.index) || (activeField === item.label)}
                         disabled={item.disabled}
                     >
                         <item.Icon width={24} height={24} />
@@ -73,6 +75,7 @@ const SideNav: React.FC<SideNavProps> = ({
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const navigate = (option: SimpleOptionProps, route: string | null): void => {
+        console.log(option)
         setOptionSelected(option);
 
         setDropdown(false);
@@ -159,10 +162,11 @@ const SideNav: React.FC<SideNavProps> = ({
                 {routes.map((props, index) => (
                     <Option
                         {...props}
-                        key={index}
+                        key={props.index || String(index)}
+                        index={props.index || String(index)}
                         show={show === index}
                         select={navigate}
-                        activeField={optionSelected?.key || String(optionSelected?.label)}
+                        activeField={String(optionSelected?.index || optionSelected?.label)}
                         toggleState={() => setShow(prev => (prev !== index ? index : -1))}
                     >
                         {props.children}

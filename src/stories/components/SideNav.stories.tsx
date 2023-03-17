@@ -30,10 +30,9 @@ const Template: ComponentStory<typeof SideNav> = (args) => <SideNav {...args} />
 const routes: SideNavProps["routes"] = [
   {
     Icon: User,
-    label: <>Profile <Chip label={'5 Unfulfilled'} color='orange' style={{ marginLeft: '1rem' }} /> </>,
+    label: 'Profile',
     route: null,
     disabled: false,
-    key: 'profile',
     children: [
       {
         Icon: Profile,
@@ -98,9 +97,10 @@ const routes: SideNavProps["routes"] = [
   },
   {
     Icon: NFT,
-    label: 'NFT Inventory',
+    label: <>Inventory <Chip label={'5 Unfulfilled'} color='orange' style={{ marginLeft: '1rem' }} /> </>,
     route: '/nft-inventory',
-    disabled: false
+    disabled: false,
+    index: 'inventory'
   },
   {
     Icon: Collection,
