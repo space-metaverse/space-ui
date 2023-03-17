@@ -100,7 +100,7 @@ const routes: SideNavProps["routes"] = [
     Icon: NFT,
     label: 'NFT Inventory',
     route: '/nft-inventory',
-    disabled: true
+    disabled: false
   },
   {
     Icon: Collection,

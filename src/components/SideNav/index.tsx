@@ -48,7 +48,7 @@ const Option: React.FC<OptionComponentProps> = ({
                                 }, item.route);
                             }
                         }}
-                        selected={activeField === item.label}
+                        selected={(activeField === item.key) || (activeField === item.label)}
                         disabled={item.disabled}
                     >
                         <item.Icon width={24} height={24} />
