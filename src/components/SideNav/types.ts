@@ -6,9 +6,10 @@ interface ChildrenProps {
     route: string
     label: string | ReactNode
     disabled?: boolean
+    key?: string
 }
 
-export type SimpleOptionProps = Pick<ChildrenProps, 'Icon' | 'label'>;
+export type SimpleOptionProps = Pick<ChildrenProps, 'Icon' | 'label' | 'key'>;
 
 export interface OptionProps extends SimpleOptionProps {
     route: string | null
@@ -17,7 +18,7 @@ export interface OptionProps extends SimpleOptionProps {
     children?: ChildrenProps[]
 }
 
-export type OptionComponentProps = OptionProps & {
+export type OptionComponentProps = Omit<OptionProps, 'key'> & {
     show: boolean
     select: (option: SimpleOptionProps, route: string | null) => void
     selected?: boolean

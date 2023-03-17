@@ -36,9 +36,9 @@ const Option: React.FC<OptionComponentProps> = ({
 
         {children && (
             <SideNavStyles.Options show={show} animate>
-                {children.map(item => (
+                {children.map((item, index) => (
                     <SideNavStyles.Option
-                        key={item.label}
+                        key={index}
                         child
                         onClick={() => {
                             if (!item.disabled) {
@@ -159,10 +159,10 @@ const SideNav: React.FC<SideNavProps> = ({
                 {routes.map((props, index) => (
                     <Option
                         {...props}
-                        key={props.label}
+                        key={index}
                         show={show === index}
                         select={navigate}
-                        activeField={optionSelected?.label}
+                        activeField={optionSelected?.key || String(optionSelected?.label)}
                         toggleState={() => setShow(prev => (prev !== index ? index : -1))}
                     >
                         {props.children}

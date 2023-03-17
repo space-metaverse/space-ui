@@ -33,6 +33,7 @@ const routes: SideNavProps["routes"] = [
     label: <>Profile <Chip label={'5 Unfulfilled'} color='orange' style={{ marginLeft: '1rem' }} /> </>,
     route: null,
     disabled: false,
+    key: 'profile',
     children: [
       {
         Icon: Profile,
