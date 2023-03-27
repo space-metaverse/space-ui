@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactSVG, Props as ReactSVGProps } from 'react-svg';
+
 import styled from 'styled-components';
 
 import AccessibilitySVG from './Accessibility.svg';
@@ -134,7 +135,7 @@ import WorldSVG from './World.svg';
 type DynamicSVG = string | { src: string, height: number, width: number };
 
 // helper function to load DynamicSVGs
-const loadSVG = (svg: DynamicSVG) => typeof svg === 'string' ? svg : svg?.src;
+const loadSVG = (svg: DynamicSVG) => (typeof svg === 'string' ? svg : svg?.src);
 
 // center SVGs in wrapper
 const StyledReactSVG = styled(ReactSVG)`
@@ -148,7 +149,7 @@ const StyledReactSVG = styled(ReactSVG)`
     }
 `;
 
-interface CustomSVGProps extends Omit<ReactSVGProps, 'src'> {
+interface CustomSVGProps extends Omit<ReactSVGProps, 'src' | 'ref'> {
     svg: DynamicSVG;
     stroke?: string;
     fill?: string;
@@ -160,7 +161,7 @@ interface CustomSVGProps extends Omit<ReactSVGProps, 'src'> {
 // A custom wrapper so we can easily do height, width, stroke and fill as props.
 const CustomReactSVG = (props: CustomSVGProps) => (
     <StyledReactSVG
-        src={props.svg}
+        src={String(props.svg)}
         beforeInjection={(svg: any) => {
             if (props.height) {
                 svg.setAttribute('height', props.height.toString());
@@ -185,9 +186,9 @@ const CustomReactSVG = (props: CustomSVGProps) => (
     />
 );
 
-export interface SVGProps extends Omit<CustomSVGProps, 'svg'> { }
+export type SVGProps = Omit<CustomSVGProps, 'svg'>;
 
-const Accessibility = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AccessibilitySVG)} {...props} />
+const Accessibility = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AccessibilitySVG)} {...props} />;
 const Alert = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AlertSVG)} {...props} />;
 const Alien = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AlienSVG)} {...props} />;
 const Analytics = (props?: SVGProps) => <CustomReactSVG svg={loadSVG(AnalyticsSVG)} {...props} />;

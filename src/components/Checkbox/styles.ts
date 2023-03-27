@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import type { CheckboxProps } from "./types";
+import type { CheckboxProps } from './types';
 
 const checked = css`
-    border-color: ${({ theme }) => theme.colors.dark["700"]};
-    background-color: ${({ theme }) => theme.colors.dark["700"]};
+    border-color: ${({ theme }) => theme.colors.dark['700']};
+    background-color: ${({ theme }) => theme.colors.dark['700']};
 `;
 
 const BaseInput = styled.input`
@@ -22,7 +22,7 @@ const BaseInput = styled.input`
 
 const BaseCheck = styled.span`
     width: 1.25rem;
-    border: ${({ theme }) => `1px solid ${theme.colors.dark["500"]}`};
+    border: ${({ theme }) => `1px solid ${theme.colors.dark['500']}`};
     height: 1.25rem;
     display: flex;
     transition: ${({ theme }) => theme.transitions.ease};
@@ -39,12 +39,11 @@ const BaseCheck = styled.span`
     }
 `;
 
-const BaseLabel = styled.label<Pick<CheckboxProps, "disabled">>`
+const BaseLabel = styled.label<Pick<CheckboxProps, 'disabled'>>`
     ${({ theme }) => theme.fonts.size.sm};
     width: fit-content;
-    color: ${({ theme, disabled }) =>
-        disabled ? theme.colors.dark["600"] : theme.colors.dark["800"]};
-    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.dark['600'] : theme.colors.dark['800'])};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     display: flex;
     position: relative;
     user-select: none;
@@ -52,9 +51,8 @@ const BaseLabel = styled.label<Pick<CheckboxProps, "disabled">>`
     font-weight: ${({ theme }) => theme.fonts.weight.medium};
     font-family: ${({ theme }) => theme.fonts.family.body};
 
-    ${({ disabled }) =>
-        disabled &&
-        css`
+    ${({ disabled }) => disabled
+        && css`
             ${BaseCheck} {
                 cursor: not-allowed;
                 opacity: 0.5;

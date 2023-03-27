@@ -6,6 +6,7 @@ import * as SideNavStyles from './styles';
 import type { SideNavProps, SimpleOptionProps, OptionComponentProps } from './types';
 
 const Option: React.FC<OptionComponentProps> = ({
+    index,
     show,
     Icon,
     route,
@@ -14,19 +15,20 @@ const Option: React.FC<OptionComponentProps> = ({
     disabled,
     selected,
     children,
+    activeField,
     toggleState,
 }) => (
     <SideNavStyles.OptionWrapper>
         <SideNavStyles.Option
             onClick={() => {
                 if (!disabled) {
-                    if (!children) select({ label, Icon }, route);
+                    if (!children) select({ label, Icon, index }, route);
                     toggleState();
                 }
             }}
             animate={show}
             disabled={disabled}
-            selected={label === selected && !children}
+            selected={(selected || (activeField === index) || (activeField === label)) && !children}
         >
             <Icon width={24} height={24} />
             <p>{label}</p>
@@ -35,19 +37,20 @@ const Option: React.FC<OptionComponentProps> = ({
 
         {children && (
             <SideNavStyles.Options show={show} animate>
-                {children.map(item => (
+                {children.map((item, index) => (
                     <SideNavStyles.Option
-                        key={item.label}
+                        key={index}
                         child
                         onClick={() => {
                             if (!item.disabled) {
                                 select({
                                     Icon: item.Icon,
                                     label: item.label,
+                                    index: item.index,
                                 }, item.route);
                             }
                         }}
-                        selected={selected === item.label}
+                        selected={(activeField === item.index) || (activeField === item.label)}
                         disabled={item.disabled}
                     >
                         <item.Icon width={24} height={24} />
@@ -72,6 +75,7 @@ const SideNav: React.FC<SideNavProps> = ({
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const navigate = (option: SimpleOptionProps, route: string | null): void => {
+        console.log(option)
         setOptionSelected(option);
 
         setDropdown(false);
@@ -144,7 +148,13 @@ const SideNav: React.FC<SideNavProps> = ({
                             <ArrowLeft />
                         </SideNavStyles.BackIconButton>
                     )}
-                    <SideNavStyles.Title>{title}</SideNavStyles.Title>
+                    {
+                        typeof title === 'string' ? (
+                            <SideNavStyles.Title>{title}</SideNavStyles.Title>
+                        ) : (
+                            title
+                        )
+                    }
                 </SideNavStyles.Content>
             )}
 
@@ -152,10 +162,11 @@ const SideNav: React.FC<SideNavProps> = ({
                 {routes.map((props, index) => (
                     <Option
                         {...props}
-                        key={props.label}
+                        key={props.index || String(index)}
+                        index={props.index || String(index)}
                         show={show === index}
                         select={navigate}
-                        selected={optionSelected?.label}
+                        activeField={String(optionSelected?.index || optionSelected?.label)}
                         toggleState={() => setShow(prev => (prev !== index ? index : -1))}
                     >
                         {props.children}

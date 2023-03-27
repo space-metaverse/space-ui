@@ -1,8 +1,8 @@
-import { useState } from "react";
-import PhoneInputInternational from "react-phone-input-international";
+import { useState } from 'react';
+import PhoneInputInternational from 'react-phone-input-international';
 
-import Styled from "../TextInput/styles";
-import PhoneInputStyles, { Wrapper } from "./styles";
+import Styled from '../TextInput/styles';
+import PhoneInputStyles, { Wrapper } from './styles';
 
 type PhoneInputProps = {
     mainCountry: string;
@@ -15,12 +15,12 @@ type PhoneInputProps = {
 };
 const PhoneInput = ({
     label,
-    value = "",
+    value = '',
     isError = false,
     enableSearch = true,
     disableSearchIcon = false,
     onChange = () => {},
-    mainCountry = "ca",
+    mainCountry = 'ca',
     ...props
 }: PhoneInputProps) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);

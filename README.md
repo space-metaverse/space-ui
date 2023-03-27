@@ -5,9 +5,29 @@ React component library for metaverse 3D and 2D apps.
 
 ## How to use the UI library
 
-`npm install @space-metaverse-ag/space-ui`
+1.) `npm install @space-metaverse-ag/space-ui`
 
-#### Example usage:
+2.) Wrap `ThemeProvider` around your app. 
+
+```
+import { ThemeProvider } from '@space-metaverse-ag/space-ui'
+
+const App = ({ Component, pageProps }: AppProps) => (
+  <Provider store={store}>
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  </Provider>
+)
+```
+
+3.) Import `index.css` into your app.
+
+```
+import "@space-metaverse-ag/space-ui/index.css"
+```
+
+### Example usage:
 
 Components: 
 

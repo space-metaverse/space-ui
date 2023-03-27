@@ -9,6 +9,7 @@ const Table = ({
     rows = [],
     columns = [],
     withBorder,
+    onRowClick,
     ...rest
 }: TableProps) => {
     const [columnFilters, setColumnFilters] = useState<ColumnFilters>({});
@@ -87,15 +88,20 @@ const Table = ({
             <TableStyles.Body>
                 {
                     filteredRows.map((row, index) => (
-                        <TableStyles.BodyRow key={`${row}-${index.toString()}`}>
+                        <TableStyles.BodyRow key={`${row}-${index.toString()}`} onClick={() => onRowClick?.(row)} $clickable={!!onRowClick}>
                             {
-                                Object.values(row).map((data: any, idx) => (
-                                    <TableStyles.BodyData
-                                        key={`${data}-${idx.toString()}`}
-                                        data-label={columns[idx]}
-                                    >
-                                        {data}
-                                    </TableStyles.BodyData>
+                                Object.entries(row).map(([key, value]: any, idx) => (
+                                    <>
+                                        {key !== 'key' && (
+                                            <TableStyles.BodyData
+                                                key={`${key}-${idx.toString()}`}
+                                                data-label={columns[idx]}
+                                            >
+                                                {value}
+                                            </TableStyles.BodyData>
+                                        )
+                                        }
+                                    </>
                                 ))
                             }
                         </TableStyles.BodyRow>

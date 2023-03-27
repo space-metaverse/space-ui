@@ -11,9 +11,6 @@ import nikeImage from '../assets/nike.png';
 export default {
     title: 'Example/Table',
     component: Table,
-    argTypes: {
-
-    },
 } as ComponentMeta<typeof Table>;
 
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
@@ -45,6 +42,7 @@ Default.args = {
             orders: 4,
             action: <Chip label="View" color="blue" />,
             share: <Share style={{ height: '2rem' }} />,
+            key: '1',
         },
         {
             spaceName: <CustomTableCell>
@@ -58,6 +56,7 @@ Default.args = {
             orders: 16,
             action: <Chip label="Buy" color="red" />,
             share: <Share style={{ height: '2rem' }} />,
+            key: '2',
         },
         {
             spaceName: <CustomTableCell>
@@ -71,10 +70,12 @@ Default.args = {
             orders: 0,
             action: <Chip label="Share" color="orange" />,
             share: <Share style={{ height: '2rem' }} />,
+            key: '3',
         },
     ],
     columns: ['Space Name', 'Users', 'Products', 'Events', 'Orders', 'Action', 'Share'],
     withBorder: false,
+    onRowClick: (row: any) => console.log(row),
 };
 Default.parameters = {
     controls: {

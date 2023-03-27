@@ -13,7 +13,6 @@ import type { TextInputProps } from './types';
 const TextInput = ({
     type,
     label = 'Label',
-    value = '',
     onBlur,
     isError,
     disabled = false,
@@ -24,10 +23,8 @@ const TextInput = ({
     ...props
 }: TextInputProps) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [valueInternal, setValueInternal] = useState('');
     const [showPasswordInternal, setShowPasswordInternal] = useState(false);
 
-    const valueToUse = useMemo(() => value || valueInternal, [value, valueInternal]);
     const showPasswordToUse = useMemo(() => showPassword || showPasswordInternal, [showPassword, showPasswordInternal]);
 
     const handleBlur = useCallback((e: FocusEvent<HTMLInputElement, Element>) => {
@@ -43,10 +40,7 @@ const TextInput = ({
     }, [onFocus]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        if (!disabled) {
-            setValueInternal(event.target.value);
-            onChange?.(event);
-        }
+        if (!disabled) onChange?.(event);
     }, [onChange, disabled]);
 
     const handlePasswordToggle = useCallback(() => {
@@ -68,7 +62,6 @@ const TextInput = ({
             <TextInputStyles.InputGrid>
                 <TextInputStyles.Input
                     type={showPasswordToUse ? 'text' : type}
-                    value={valueToUse}
                     onBlur={handleBlur}
                     onFocus={handleFocus}
                     disabled={disabled}
@@ -80,7 +73,6 @@ const TextInput = ({
                         <TextInputStyles.PasswordToggleWrapper
                             as={showPasswordToUse ? EyeOpen : EyeClose}
                             onClick={handlePasswordToggle}
-                            disabled={disabled}
                         />
                     )
                 }

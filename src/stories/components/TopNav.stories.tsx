@@ -10,14 +10,30 @@ export default {
     },
 } as ComponentMeta<typeof TopNav>;
 
-const Template: ComponentStory<typeof TopNav> = (args) => <TopNav {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
+const props = {
     user: {
         name: 'Space',
         avatar: 'https://tryspace-prod-assets.tryspace-internal.com/files/6845bb12-f3c4-4ab2-b5f5-f7556de39d36.png'
     },
+    options: [
+        {
+            icon: Logout,
+            label: 'Logout',
+            callback: () => {}
+        }
+    ],
+    className: '',
+    logoRoute: '/',
+    signInRoute: '',
+}
+
+const Template: ComponentStory<typeof TopNav> = (args) => <TopNav {...args} />;
+
+export const Default = Template.bind({});
+export const SearchBar = Template.bind({})
+
+Default.args = {
+    ...props,
     routes: [
         {
             route: 'https://app.tryspace.com/token',
@@ -56,17 +72,29 @@ Default.args = {
             isExternal: true
         }
     ],
-    options: [
-        {
-            icon: Logout,
-            label: 'Logout',
-            callback: () => {}
-        }
-    ],
-    className: '',
-    signInRoute: ''
 };
 Default.parameters = {
+    controls: {
+        exclude: ['as', 'css'],
+    },
+};
+
+
+SearchBar.args = {
+    ...props,
+    searchBar: {
+        options: [
+            'All',
+            'Option 1',
+            'Option 2',
+            'Option 3'
+        ],
+        onSubmit: () => {},
+        onOption: () => {},
+        placeholder: 'Search for stores and products'
+    },
+};
+SearchBar.parameters = {
     controls: {
         exclude: ['as', 'css'],
     },

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextInput } from '../../components/TextInput';
 import styled from 'styled-components';
@@ -15,7 +15,11 @@ export default {
     },
 } as ComponentMeta<typeof TextInput>;
 
-const Template: ComponentStory<typeof TextInput> = (args) => <CustomTextInput {...args} />;
+const Template: ComponentStory<typeof TextInput> = (args) => {
+    const [value, setValue] = useState('')
+
+    return <CustomTextInput {...args} value={value || args.value} onChange={(e) => setValue(e.target.value)} />
+};
 
 export const Text = Template.bind({});
 export const Password = Template.bind({});

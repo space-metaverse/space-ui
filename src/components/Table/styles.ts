@@ -37,7 +37,14 @@ const HeadGrid = styled.div`
 
 const Body = styled.tbody``;
 
-const BodyRow = styled.tr``;
+const BodyRow = styled.tr<{ $clickable: boolean }>`
+    ${({ $clickable }) => $clickable && css`
+        cursor: pointer;
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.dark['100']};
+        }
+    `}
+`;
 
 const BodyData = styled.td`
     ${({ theme }) => theme.fonts.size.md};
