@@ -58,7 +58,7 @@ const Table = ({
                                 onClick={() => handleColumnFilter(column)}
                             >
                                 <TableStyles.HeadGrid>
-                                    {
+                                    {/* {
                                         (typeof Object.values(rows?.[0])?.[index] === 'number'
                                             ?? typeof Object.values(rows?.[0])?.[index] === 'string') && (
                                             <Selector
@@ -77,7 +77,7 @@ const Table = ({
                                                 }}
                                             />
                                         )
-                                    }
+                                    } */}
                                     {column}
                                 </TableStyles.HeadGrid>
                             </TableStyles.HeadData>
